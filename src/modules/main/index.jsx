@@ -1,13 +1,17 @@
 import React, { useState, useEffect } from 'react';
-import { Outlet } from 'react-router-dom';
+import { Outlet, useLocation } from 'react-router-dom';
 import { sleep } from '../../utils/helpers';
 import { APP_NAME } from '../../helpers/env';
+import BodyClassName from 'react-body-classname';
 import ControlSidebar from './control-sidebar';
 import Header from './header';
 import MenuSidebar from './menu-sidebar';
 import Footer from './footer';
 
+import img from '../../assets/images/vector 3.png';
+
 const index = () => {
+  const location = useLocation();
   const [isAppLoaded, setIsAppLoaded] = useState(false);
 
   const fetchProfile = async () => {
@@ -22,40 +26,38 @@ const index = () => {
 
   useEffect(() => {
     document.title = `${APP_NAME} - Dashboard Admin`;
-    // addWindowClass('hold-transition sidebar-mini');
-    // removeWindowClass('hold-transition login-page');
-
-    fetchProfile();
-    // return () => {
-    //   removeWindowClass('hold-transition login-page');
-    // };
+    if (location.pathname === '/') {
+      fetchProfile();
+    }
   }, []);
 
   return (
-    <div className="wrapper">
-      {!isAppLoaded && (
-        <div className="preloader flex-column justify-content-center align-items-center">
-          <img
-            className="animation__shake"
-            src="dist/img/AdminLTELogo.png"
-            alt="AdminLTELogo"
-            height="60"
-            width="60"
-          />
+    <BodyClassName className="hold-transition sidebar-mini">
+      <div className="wrapper">
+        {!isAppLoaded && (
+          <div className="preloader flex-column justify-content-center align-items-center">
+            <img
+              className="animation__shake"
+              src={img}
+              alt="Ankasa Ticketing"
+              height="60"
+              width="60"
+            />
+          </div>
+        )}
+
+        <Header />
+
+        <MenuSidebar />
+
+        <div className="content-wrapper">
+          <Outlet />
         </div>
-      )}
 
-      <Header />
-
-      <MenuSidebar />
-
-      <div className="content-wrapper">
-        <Outlet />
+        <ControlSidebar />
+        <Footer />
       </div>
-
-      <ControlSidebar />
-      <Footer />
-    </div>
+    </BodyClassName>
   );
 };
 
