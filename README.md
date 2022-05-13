@@ -24,7 +24,10 @@
   </a>
   <a href="https://getbootstrap.com/docs/5.1/getting-started/introduction/">
     <img src="https://img.shields.io/badge/Bootstrap-v5-blueviolet?style=flat">
-  </a>                                     
+  </a>
+  <a href="https://adminlte.io/">
+    <img src="https://img.shields.io/badge/AdminLTE-v3.2-9cf?style=flat">
+  </a>
 </p>
 
 <!-- TABLE OF CONTENTS -->
