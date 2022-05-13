@@ -1,9 +1,12 @@
 import React from 'react';
+import { Link, useLocation } from 'react-router-dom';
 
 import img from '../../../assets/images/vector 3.png';
 import photo from '../../../assets/images/user2-160x160.jpg';
 
 const index = () => {
+  const location = useLocation();
+
   return (
     <>
       {/* Main Sidebar Container */}
@@ -59,36 +62,40 @@ const index = () => {
               data-accordion="false">
               {/* Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library */}
-              <li className="nav-item menu-open">
-                <a href="#" className="nav-link active">
+              <li className="nav-item">
+                <Link
+                  to="/"
+                  className={`${location.pathname === '/' ? 'nav-link active' : 'nav-link'}`}>
                   <i className="nav-icon fas fa-tachometer-alt"></i>
-                  <p>
-                    Starter Pages
-                    <i className="right fas fa-angle-left"></i>
-                  </p>
-                </a>
-                <ul className="nav nav-treeview">
-                  <li className="nav-item">
-                    <a href="#" className="nav-link active">
-                      <i className="far fa-circle nav-icon"></i>
-                      <p>Active Page</p>
-                    </a>
-                  </li>
-                  <li className="nav-item">
-                    <a href="#" className="nav-link">
-                      <i className="far fa-circle nav-icon"></i>
-                      <p>Inactive Page</p>
-                    </a>
-                  </li>
-                </ul>
+                  <p> Dashboard</p>
+                </Link>
+              </li>
+              <li className="nav-header">MANAGEMENT</li>
+              <li className="nav-item">
+                <Link
+                  to="/airline"
+                  className={`${
+                    location.pathname.includes('/airline') ? 'nav-link active' : 'nav-link'
+                  }`}>
+                  <i className="nav-icon fas fa-plane"></i>
+                  <p> Airline</p>
+                </Link>
               </li>
               <li className="nav-item">
+                <Link
+                  to="/flight"
+                  className={`${
+                    location.pathname.includes('/flight') ? 'nav-link active' : 'nav-link'
+                  }`}>
+                  <i className="nav-icon fas fa-plane-departure"></i>
+                  <p> Flight</p>
+                </Link>
+              </li>
+              <li className="nav-header">LOGOUT</li>
+              <li className="nav-item">
                 <a href="#" className="nav-link">
-                  <i className="nav-icon fas fa-th"></i>
-                  <p>
-                    Simple Link
-                    <span className="right badge badge-danger">New</span>
-                  </p>
+                  <i className="nav-icon fas fa-sign-out-alt"></i>
+                  <p> Logout</p>
                 </a>
               </li>
             </ul>
