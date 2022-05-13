@@ -1,7 +1,7 @@
 <div id="top"></div>
 <p align="center">
   <a href="https://github.com/altrawan/ankasa-ticketing-admin">
-    <img src="./screenshoots/logo.png"  width="200px" alt="Logo">
+    <img src="https://github.com/altrawan/ankasa-ticketing-frontend/raw/master/screenshoots/logo.png"  width="200px" alt="Logo">
   </a>
 </p>
 <h3 align="center">Ankasa Ticketing Admin</h3>
@@ -12,7 +12,7 @@
     <strong>Explore the docs »</strong>
   </a>
   <br /><br/>
-  <a href="https://ankasa-ticketing-admin.netlify.app">View Demo</a>
+  <a href="https://ankasa-ticketing-admin.netlify.app/">View Demo</a>
   ·
   <a href="https://github.com/altrawan/ankasa-ticketing-admin/issues">Report Bug</a>
   ·
