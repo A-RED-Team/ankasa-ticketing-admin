@@ -92,7 +92,7 @@ REACT_APP_STAGING=prod / dev
 ```
 4. Start the Application
 ```
-  npm start
+npm start
 ```
 
 <p align="right">(<a href="#top">back to top</a>)</p>
