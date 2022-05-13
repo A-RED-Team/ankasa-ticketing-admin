@@ -8,8 +8,6 @@ const index = () => {
     document.title = `${APP_NAME} - Login Page`;
   }, []);
 
-  // setWindowClass('');
-
   return (
     <BodyClassName className="hold-transition login-page">
       <div className="login-box" style={{ margin: '0 auto' }}>

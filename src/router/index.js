@@ -7,8 +7,12 @@ import Login from '../modules/login';
 import Main from '../modules/main';
 import Dashboard from '../pages/Dashboard';
 import NotFound from '../pages/NotFound';
+
 import Airline from '../pages/airline';
+import AddAirline from '../pages/airline/add';
+
 import Flight from '../pages/flight';
+import AddFlight from '../pages/flight/add';
 
 const router = () => {
   return (
@@ -22,7 +26,9 @@ const router = () => {
             <Route index element={<Dashboard />} />
             <Route path="*" element={<NotFound />} />
             <Route path="airline" element={<Airline />} />
+            <Route path="airline/add" element={<AddAirline />} />
             <Route path="flight" element={<Flight />} />
+            <Route path="flight/add" element={<AddFlight />} />
           </Route>
         </Route>
       </Routes>

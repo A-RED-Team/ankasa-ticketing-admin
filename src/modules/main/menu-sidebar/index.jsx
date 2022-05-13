@@ -1,5 +1,8 @@
 import React from 'react';
 
+import img from '../../../assets/images/vector 3.png';
+import photo from '../../../assets/images/user2-160x160.jpg';
+
 const index = () => {
   return (
     <>
@@ -8,12 +11,12 @@ const index = () => {
         {/* Brand Logo */}
         <a href="index3.html" className="brand-link">
           <img
-            src="dist/img/AdminLTELogo.png"
-            alt="AdminLTE Logo"
-            className="brand-image img-circle elevation-3"
+            src={img}
+            alt="Ankasa Ticketing"
+            className="brand-image elevation-3"
             style={{ opacity: '.8' }}
           />
-          <span className="brand-text font-weight-light">AdminLTE 3</span>
+          <span className="brand-text font-weight-light">Admin Ankasa</span>
         </a>
 
         {/* Sidebar */}
@@ -21,11 +24,7 @@ const index = () => {
           {/* Sidebar user panel (optional) */}
           <div className="user-panel mt-3 pb-3 mb-3 d-flex">
             <div className="image">
-              <img
-                src="dist/img/user2-160x160.jpg"
-                className="img-circle elevation-2"
-                alt="User Image"
-              />
+              <img src={photo} className="img-circle elevation-2" alt="User Image" />
             </div>
             <div className="info">
               <a href="#" className="d-block">
