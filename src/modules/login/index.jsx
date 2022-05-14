@@ -62,10 +62,10 @@ const index = () => {
             </div>
 
             <p className="mb-1">
-              <a href="forgot-password.html">I forgot my password</a>
+              <a href="#">I forgot my password</a>
             </p>
             <p className="mb-0">
-              <a href="register.html" className="text-center">
+              <a href="#" className="text-center">
                 Register a new membership
               </a>
             </p>
