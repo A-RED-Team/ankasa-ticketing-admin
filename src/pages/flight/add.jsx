@@ -100,71 +100,20 @@ const add = () => {
                   <div className="col-md-6">
                     <div className="form-group">
                       <label>Departure Time</label>
-                      <div
-                        className="input-group date"
-                        id="reservationdate"
-                        data-target-input="nearest">
-                        <input
-                          type="text"
-                          className="form-control datetimepicker-input"
-                          data-target="#reservationdate"
-                        />
-                        <div
-                          className="input-group-append"
-                          data-target="#reservationdate"
-                          data-toggle="datetimepicker">
-                          <div className="input-group-text">
-                            <i className="fa fa-clock"></i>
-                          </div>
-                        </div>
-                      </div>
+                      <input type="time" className="form-control" name="" id="" />
                     </div>
                   </div>
                   <div className="col-md-6">
                     <div className="form-group">
                       <label>Arrival Time</label>
-                      <div
-                        className="input-group date"
-                        id="reservationdate"
-                        data-target-input="nearest">
-                        <input
-                          type="text"
-                          className="form-control datetimepicker-input"
-                          data-target="#reservationdate"
-                        />
-                        <div
-                          className="input-group-append"
-                          data-target="#reservationdate"
-                          data-toggle="datetimepicker">
-                          <div className="input-group-text">
-                            <i className="fa fa-clock"></i>
-                          </div>
-                        </div>
-                      </div>
+                      <input type="time" className="form-control" name="" id="" />
                     </div>
                   </div>
                   {/* /.col */}
                   <div className="col-md-6">
                     <div className="form-group">
                       <label>Departure Date</label>
-                      <div
-                        className="input-group date"
-                        id="reservationdate"
-                        data-target-input="nearest">
-                        <input
-                          type="text"
-                          className="form-control datetimepicker-input"
-                          data-target="#reservationdate"
-                        />
-                        <div
-                          className="input-group-append"
-                          data-target="#reservationdate"
-                          data-toggle="datetimepicker">
-                          <div className="input-group-text">
-                            <i className="fa fa-calendar"></i>
-                          </div>
-                        </div>
-                      </div>
+                      <input type="date" className="form-control" name="" id="" />
                     </div>
                   </div>
                   <div className="col-md-6">
