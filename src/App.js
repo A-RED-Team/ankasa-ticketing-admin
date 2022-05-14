@@ -22,6 +22,7 @@ import 'admin-lte/plugins/select2/js/select2.full.min.js';
 
 // InputMask
 // import 'admin-lte/plugins/moment/moment.min.js';
+import 'moment';
 import 'admin-lte/plugins/inputmask/jquery.inputmask.min.js';
 
 // Tempusdominus Bootstrap 4
