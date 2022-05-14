@@ -6,9 +6,9 @@ import 'moment';
 
 import $ from 'jquery';
 
-const edit = () => {
+const view = () => {
   useEffect(() => {
-    document.title = `${APP_NAME} - Add Flight`;
+    document.title = `${APP_NAME} - View Flight`;
     $(document).ready(function () {
       setTimeout(function () {
         // $('#datetimepicker1').tempusDominus();
@@ -24,14 +24,14 @@ const edit = () => {
 
   return (
     <>
-      <ContentHeader title="Edit Flight" />
+      <ContentHeader title="Add Flight" />
       {/* Main content */}
       <section className="content">
         <div className="container-fluid">
           {/* SELECT2 EXAMPLE */}
           <div className="card card-default">
             <div className="card-header">
-              <h3 className="card-title">Edit Flight</h3>
+              <h3 className="card-title">View Flight</h3>
 
               <div className="card-tools">
                 <button type="button" className="btn btn-tool" data-card-widget="collapse">
@@ -296,4 +296,4 @@ const edit = () => {
   );
 };
 
-export default edit;
+export default view;
