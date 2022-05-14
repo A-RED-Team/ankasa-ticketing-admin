@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import ContentHeader from '../components/content-header';
 import { APP_NAME } from '../helpers/env';
 
@@ -21,7 +22,7 @@ const NotFound = () => {
 
             <p>
               We could not find the page you were looking for. Meanwhile, you may{' '}
-              <a href="../../index.html">return to dashboard</a> or try using the search form.
+              <Link to="/">return to dashboard</Link> or try using the search form.
             </p>
 
             <form className="search-form">

@@ -2,7 +2,6 @@ import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { APP_NAME } from '../../helpers/env';
 import ContentHeader from '../../components/content-header';
-import 'moment';
 
 import $ from 'jquery';
 
@@ -210,16 +209,16 @@ const add = () => {
                       <label>Transit</label>
                       <div className="form-group clearfix">
                         <div className="icheck-primary d-inline">
-                          <input type="checkbox" id="checkboxPrimary1" />
-                          <label htmlFor="checkboxPrimary1">Direct</label>
+                          <input type="radio" id="radioPrimary1" name="r1" />
+                          <label htmlFor="radioPrimary1">Direct</label>
                         </div>
                         <div className="icheck-primary d-inline ml-3">
-                          <input type="checkbox" id="checkboxPrimary2" />
-                          <label htmlFor="checkboxPrimary2">Transit</label>
+                          <input type="radio" id="radioPrimary2" name="r1" />
+                          <label htmlFor="radioPrimary2">Transit</label>
                         </div>
                         <div className="icheck-primary d-inline ml-3">
-                          <input type="checkbox" id="checkboxPrimary3" />
-                          <label htmlFor="checkboxPrimary3">Transit 2+</label>
+                          <input type="checkbox" id="checkboxPrimary4" />
+                          <label htmlFor="checkboxPrimary4">Transit 2+</label>
                         </div>
                       </div>
                     </div>

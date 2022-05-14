@@ -1,6 +1,6 @@
 import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-// import PrivateRoute from '../utils/privateRoute';
+import PrivateRoute from '../utils/privateRoute';
 import ScrollToTop from '../utils/scrollToTop';
 
 import Login from '../modules/login';
@@ -25,7 +25,7 @@ const router = () => {
         <Route path="/login">
           <Route index element={<Login />} />
         </Route>
-        <Route path="/">
+        <Route path="/" element={<PrivateRoute />}>
           <Route path="/" element={<Main />}>
             <Route index element={<Dashboard />} />
             <Route path="*" element={<NotFound />} />
