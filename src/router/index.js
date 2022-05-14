@@ -10,9 +10,13 @@ import NotFound from '../pages/NotFound';
 
 import Airline from '../pages/airline';
 import AddAirline from '../pages/airline/add';
+import EditAirline from '../pages/airline/edit';
+import ViewAirline from '../pages/airline/view';
 
 import Flight from '../pages/flight';
 import AddFlight from '../pages/flight/add';
+import EditFlight from '../pages/flight/edit';
+import ViewFlight from '../pages/flight/view';
 
 const router = () => {
   return (
@@ -27,8 +31,12 @@ const router = () => {
             <Route path="*" element={<NotFound />} />
             <Route path="airline" element={<Airline />} />
             <Route path="airline/add" element={<AddAirline />} />
+            <Route path="airline/edit/:id" element={<EditAirline />} />
+            <Route path="airline/view/:id" element={<ViewAirline />} />
             <Route path="flight" element={<Flight />} />
             <Route path="flight/add" element={<AddFlight />} />
+            <Route path="flight/edit/:id" element={<EditFlight />} />
+            <Route path="flight/view/:id" element={<ViewFlight />} />
           </Route>
         </Route>
       </Routes>

@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import { APP_NAME } from '../../helpers/env';
 import ContentHeader from '../../components/content-header';
 
@@ -65,9 +66,9 @@ const add = () => {
               </div>
               {/* /.card-body */}
               <div className="card-footer">
-                <button type="submit" className="btn btn-secondary">
+                <Link to="/airline" className="btn btn-secondary">
                   <i className="fa fa-arrow-left"></i> Back
-                </button>
+                </Link>
                 <button type="submit" className="btn btn-primary ml-2">
                   <i className="fa fa-save"></i> Save
                 </button>

@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import { APP_NAME } from '../../helpers/env';
 import ContentHeader from '../../components/content-header';
 import 'moment';
@@ -10,6 +11,7 @@ const add = () => {
     document.title = `${APP_NAME} - Add Flight`;
     $(document).ready(function () {
       setTimeout(function () {
+        // $('#datetimepicker1').tempusDominus();
         //Initialize Select2 Elements
         // $('.select2').select2();
         //Initialize Select2 Elements
@@ -278,9 +280,9 @@ const add = () => {
               </div>
               {/* /.card-body */}
               <div className="card-footer">
-                <button type="submit" className="btn btn-secondary">
+                <Link to="/flight" className="btn btn-secondary">
                   <i className="fa fa-arrow-left"></i> Back
-                </button>
+                </Link>
                 <button type="submit" className="btn btn-primary ml-2">
                   <i className="fa fa-save"></i> Save
                 </button>
