@@ -5,10 +5,12 @@ import BodyClassName from 'react-body-classname';
 import { useNavigate } from 'react-router-dom';
 import swal from 'sweetalert2';
 import { login } from '../../redux/actions/auth';
-import { toastr } from '../../utils/toast';
+import { toastr } from '../../utils/toastr';
+import jwt_decode from 'jwt-decode';
 
 const index = () => {
   const navigate = useNavigate();
+  const [passwordVisibility, setPasswordVisibility] = useState(false);
   const token = localStorage.getItem('token');
   const [loading, setLoading] = useState(false);
   const [form, setForm] = useState({
@@ -34,15 +36,26 @@ const index = () => {
       setLoading(true);
       login(form)
         .then((res) => {
-          swal
-            .fire({
-              title: 'Success!',
-              text: res.message,
-              icon: 'success'
-            })
-            .then(() => {
-              navigate('/');
+          const decoded = jwt_decode(res.token);
+
+          if (decoded.level === 1) {
+            localStorage.setItem('token', res.token);
+            swal
+              .fire({
+                title: 'Success!',
+                text: res.message,
+                icon: 'success'
+              })
+              .then(() => {
+                navigate('/');
+              });
+          } else {
+            swal.fire({
+              title: 'Error!',
+              text: "You don't have access to this page",
+              icon: 'error'
             });
+          }
         })
         .catch((err) => {
           if (err.response.data.message === 'validation failed') {
@@ -89,7 +102,7 @@ const index = () => {
               </div>
               <div className="input-group mb-3">
                 <input
-                  type="password"
+                  type={passwordVisibility ? 'text' : 'password'}
                   className="form-control"
                   placeholder="Password"
                   onChange={(e) => setForm({ ...form, password: e.target.value })}
@@ -101,13 +114,19 @@ const index = () => {
                 </div>
               </div>
               <div className="row">
-                {/* <div className="col-8">
+                <div className="col-8">
                   <div className="icheck-primary">
-                    <input type="checkbox" id="remember" />
-                    <label htmlFor="remember">Remember Me</label>
+                    <input
+                      type="checkbox"
+                      id="remember"
+                      onChange={() => {
+                        setPasswordVisibility(!passwordVisibility);
+                      }}
+                    />
+                    <label htmlFor="remember">Show Password</label>
                   </div>
-                </div> */}
-                <div className="col-12">
+                </div>
+                <div className="col-4">
                   {loading ? (
                     <button type="submit" className="btn btn-primary btn-block" disabled>
                       <span

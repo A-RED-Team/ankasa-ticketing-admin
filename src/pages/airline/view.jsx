@@ -2,11 +2,8 @@ import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { APP_NAME } from '../../helpers/env';
 import ContentHeader from '../../components/content-header';
-import ContentLoader from 'react-content-loader';
-import { useDispatch } from 'react-redux';
 
 const view = () => {
-  dispatch = useDispatch();
   useEffect(() => {
     document.title = `${APP_NAME} - View Airline`;
   }, []);
