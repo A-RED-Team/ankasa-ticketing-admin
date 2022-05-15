@@ -1,11 +1,17 @@
 import React from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useNavigate, useLocation } from 'react-router-dom';
 
 import img from '../../../assets/images/vector 3.png';
 import photo from '../../../assets/images/user2-160x160.jpg';
 
 const index = () => {
+  const navigate = useNavigate();
   const location = useLocation();
+
+  const logout = () => {
+    localStorage.clear();
+    return navigate('/login');
+  };
 
   return (
     <>
@@ -93,7 +99,7 @@ const index = () => {
               </li>
               <li className="nav-header">LOGOUT</li>
               <li className="nav-item">
-                <a href="#" className="nav-link">
+                <a onClick={logout} className="nav-link">
                   <i className="nav-icon fas fa-sign-out-alt"></i>
                   <p> Logout</p>
                 </a>
