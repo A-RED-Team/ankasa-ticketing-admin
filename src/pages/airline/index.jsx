@@ -21,14 +21,17 @@ const index = () => {
   });
   useEffect(() => {
     document.title = `${APP_NAME} - Management Airline`;
+    dispatch(getAllAirline());
+  }, []);
+
+  useEffect(() => {
     $(document).ready(function () {
       setTimeout(function () {
         $('#example1').DataTable();
       }, 1000);
     });
+  }, [allAirline]);
 
-    dispatch(getAllAirline());
-  }, []);
   const goNonActive = (e, id) => {
     e.preventDefault();
     swal
@@ -152,6 +155,7 @@ const index = () => {
         }
       });
   };
+
   return (
     <>
       <ContentHeader title="Airlines" />
