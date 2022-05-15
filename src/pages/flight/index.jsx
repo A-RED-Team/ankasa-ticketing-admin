@@ -86,6 +86,10 @@ const index = () => {
                                 <i className="fas fa-pencil-alt"></i>
                                 Edit
                               </a>
+                              <div className="btn btn-info btn-sm ml-2">
+                                <i className="fa-solid fa-power-off"></i>
+                                Status
+                              </div>
                               <a className="btn btn-danger btn-sm ml-2" href="#">
                                 <i className="fas fa-trash"></i>
                                 Delete
@@ -94,16 +98,7 @@ const index = () => {
                           </tr>
                         ))}
                       </tbody>
-                      <tfoot>
-                        <tr>
-                          <th>No</th>
-                          <th>Name</th>
-                          <th>Departure Date</th>
-                          <th>PIC</th>
-                          <th>Status</th>
-                          <th>Option</th>
-                        </tr>
-                      </tfoot>
+                      <tfoot></tfoot>
                     </table>
                   )}
                 </div>
