@@ -1,11 +1,24 @@
 import React, { useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import { APP_NAME } from '../../helpers/env';
 import ContentHeader from '../../components/content-header';
+import ContentLoader from 'react-content-loader';
+import { useDispatch, useSelector } from 'react-redux';
+import { getdetailAirline } from '../../redux/actions/detailAirline';
+import moment from 'moment';
 
 const view = () => {
+  const dispatch = useDispatch();
+  
+  const detailAirline = useSelector((state) => {
+    return state.detailAirlineReducer;
+  });
+  const { id } = useParams();
+  
   useEffect(() => {
     document.title = `${APP_NAME} - View Airline`;
+    dispatch(getdetailAirline(id));
+    console.log(detailAirline);
   }, []);
 
   return (
@@ -29,10 +42,70 @@ const view = () => {
               </div>
             </div>
             {/* /.card-header */}
-            <div className="card-body">
+            <div className="card-body container-fluid">
               <div className="row">
-                <div className="col-md-6">
-                  <div className="form-group">
+                <div className="col-md-12">
+                  {detailAirline.isLoading ? (
+                    <ContentLoader />
+                  ) : detailAirline.isError ? (
+                    <div>Error</div>
+                  ) : (
+                    <div className="col-md-12 text-center">
+                      <img
+                        src={`${process.env.REACT_APP_PROD}uploads/airlines/${detailAirline?.data?.data?.image}`}
+                        className="card-img-top img-fluid"
+                        onError={(e) => {
+                          e.target.src = `${process.env.REACT_APP_PROD}uploads/airlines/airlines-default.png`;
+                        }}
+                        style={{
+                          width: '30%'
+                        }}
+                        alt={`${detailAirline?.data?.data?.name}`}
+                      />
+                      <span>
+                        <h1 className="card-text mt-4">{detailAirline?.data?.data?.name}</h1>{' '}
+                        {detailAirline?.data?.data?.is_active == 1 ? (
+                          <span className="badge badge-pill badge-success">Active</span>
+                        ) : (
+                          <span className="badge badge-pill badge-danger">Non Active</span>
+                        )}
+                      </span>
+                      <table className="col-md-12 mt-md-5 table-bordered">
+                        <thead>
+                          <tr className="">
+                            <th className="col-md-4">Created At</th>
+                            <th className="col-md-4">Updated At</th>
+                            <th className="col-md-4">Deleted At</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td>
+                              {moment(detailAirline?.data?.data?.created_at).format(
+                                'dddd, DD-MMMM-YYYY'
+                              )}
+                            </td>
+                            <td>
+                              {detailAirline?.data?.data?.updated_at
+                                ? moment(detailAirline?.data?.data?.updated_at).format(
+                                    'dddd, DD-MMMM-YYYY'
+                                  )
+                                : 'none'}
+                            </td>
+                            <td>
+                              {detailAirline?.data?.data?.deleted_at
+                                ? moment(detailAirline?.data?.data?.deleted_at).format(
+                                    'dddd, DD-MMMM-YYYY'
+                                  )
+                                : 'none'}
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  )}
+
+                  {/* <div className="form-group">
                     <label htmlFor="name">Name</label>
                     <input
                       type="text"
@@ -40,10 +113,10 @@ const view = () => {
                       id="name"
                       placeholder="Enter name"
                     />
-                  </div>
+                  </div> */}
                   {/* /.form-group */}
                 </div>
-                <div className="col-md-6">
+                {/* <div className="col-md-6">
                   <div className="form-group">
                     <label htmlFor="image">Image</label>
                     <div className="input-group">
@@ -58,7 +131,7 @@ const view = () => {
                       </div>
                     </div>
                   </div>
-                </div>
+                </div> */}
                 {/* /.col */}
               </div>
               {/* /.row */}
