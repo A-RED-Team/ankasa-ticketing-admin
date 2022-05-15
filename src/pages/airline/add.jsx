@@ -62,9 +62,9 @@ const add = () => {
     }
   };
 
-  // useEffect(() => {
-  //   // document.title = `${APP_NAME} - Add Airline`;
-  // }, []);
+  useEffect(() => {
+    document.title = `${APP_NAME} - Add Airline`;
+  }, []);
 
   return (
     <>
