@@ -4,7 +4,7 @@ import { APP_NAME } from '../../helpers/env';
 import ContentHeader from '../../components/content-header';
 
 import swal from 'sweetalert2';
-import { toastr } from '../../utils/toast';
+import { toastr } from '../../utils/toastr';
 import ContentLoader from 'react-content-loader';
 import { useDispatch, useSelector } from 'react-redux';
 import { getdetailAirline } from '../../redux/actions/detailAirline';

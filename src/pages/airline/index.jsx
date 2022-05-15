@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import ContentLoader from 'react-content-loader';
 import swal from 'sweetalert2';
-import { toastr } from '../../utils/toast';
+import { toastr } from '../../utils/toastr';
 
 import { getAllAirline } from '../../redux/actions/allAirlane';
 import { changeStatusAirline } from '../../redux/actions/statusAirline';
