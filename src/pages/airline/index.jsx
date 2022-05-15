@@ -13,7 +13,7 @@ import $ from 'jquery';
 const index = () => {
   const dispatch = useDispatch();
 
-  const allAirlane = useSelector((state) => {
+  const allAirline = useSelector((state) => {
     return state.allAirlineReducer;
   });
   useEffect(() => {
@@ -44,9 +44,9 @@ const index = () => {
                   <Link to="/airline/add" className="btn btn-primary mb-3">
                     <i className="fa fa-plus"></i> Add Airline
                   </Link>
-                  {allAirlane.isLoading ? (
+                  {allAirline.isLoading ? (
                     <ContentLoader />
-                  ) : allAirlane.isError ? (
+                  ) : allAirline.isError ? (
                     <div>Error</div>
                   ) : (
                     <table id="example1" className="table table-bordered table-striped table-hover">
@@ -60,13 +60,13 @@ const index = () => {
                         </tr>
                       </thead>
                       <tbody>
-                        {allAirlane.data.data.map((item, i) => (
+                        {allAirline?.data?.data?.map((item, i) => (
                           <tr key={i}>
                             <td>{i + 1}</td>
                             <td>{item.name}</td>
                             <td>
                               <img
-                                src={`${process.env.REACT_APP_PROD}uploads/airlines/${item.image}`}
+                                src={`${process.env.REACT_APP_PROD}uploads/airlines/${item.image}`} // eslint-disable-line no-debugger
                                 alt={`${item.name}`}
                                 onError={(e) => {
                                   e.target.src = `${process.env.REACT_APP_PROD}uploads/airlines/airlines-default.png`;
