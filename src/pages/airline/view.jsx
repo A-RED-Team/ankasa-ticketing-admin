@@ -18,7 +18,6 @@ const view = () => {
   useEffect(() => {
     document.title = `${APP_NAME} - View Airline`;
     dispatch(getdetailAirline(id));
-    console.log(detailAirline);
   }, []);
 
   return (

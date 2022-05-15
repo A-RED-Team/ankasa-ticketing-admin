@@ -4,7 +4,7 @@ export const getAllAirline = () => {
   return {
     type: 'GET_ALL_AIRLINE',
     payload: axios({
-      url: `airline`,
+      url: `airline?limit=100`,
       method: 'GET'
     })
   };
