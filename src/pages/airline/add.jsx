@@ -4,7 +4,7 @@ import { APP_NAME } from '../../helpers/env';
 import ContentHeader from '../../components/content-header';
 import swal from 'sweetalert2';
 import { addAirline } from '../../redux/actions/addAirline';
-import { toastr } from '../../utils/toast';
+import { toastr } from '../../utils/toastr';
 
 const add = () => {
   const navigate = useNavigate();
