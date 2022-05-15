@@ -9,10 +9,12 @@ import moment from 'moment';
 
 const view = () => {
   const dispatch = useDispatch();
+  
   const detailAirline = useSelector((state) => {
     return state.detailAirlineReducer;
   });
   const { id } = useParams();
+  
   useEffect(() => {
     document.title = `${APP_NAME} - View Airline`;
     dispatch(getdetailAirline(id));

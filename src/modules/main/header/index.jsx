@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const index = () => {
   return (
@@ -13,9 +14,9 @@ const index = () => {
             </a>
           </li>
           <li className="nav-item d-none d-sm-inline-block">
-            <a href="index3.html" className="nav-link">
+            <Link to="/" className="nav-link">
               Home
-            </a>
+            </Link>
           </li>
           <li className="nav-item d-none d-sm-inline-block">
             <a href="#" className="nav-link">
