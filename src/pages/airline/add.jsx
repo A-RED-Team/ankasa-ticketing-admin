@@ -45,7 +45,7 @@ const add = () => {
             });
         })
         .catch((err) => {
-          if (err.response.data.message === 'validation failed') {
+          if (err.response.data.message == 'validation failed') {
             const error = err.response.data.error;
             error.map((e) => toastr(e, 'error'));
           } else {
@@ -138,21 +138,32 @@ const add = () => {
               </div>
               {/* /.card-body */}
               <div className="card-footer">
-                <Link to="/airline" className="btn btn-secondary">
-                  <i className="fa fa-arrow-left"></i> Back
-                </Link>
                 {loading ? (
-                  <button type="submit" className="btn btn-primary ml-2" disabled>
-                    <span
-                      className="spinner-border spinner-border-sm"
-                      role="status"
-                      aria-hidden="true"
-                    />
-                  </button>
+                  <div className="card-footer">
+                    <Link to="/airline" className="btn btn-secondary" disabled>
+                      <span
+                        className="spinner-border spinner-border-sm"
+                        role="status"
+                        aria-hidden="true"
+                      />
+                    </Link>
+                    <button type="submit" className="btn btn-primary ml-2" disabled>
+                      <span
+                        className="spinner-border spinner-border-sm"
+                        role="status"
+                        aria-hidden="true"
+                      />
+                    </button>
+                  </div>
                 ) : (
-                  <button type="submit" className="btn btn-primary ml-2">
-                    <i className="fa fa-save"></i> Save
-                  </button>
+                  <div className="card-footer">
+                    <Link to="/airline" className="btn btn-secondary">
+                      <i className="fa fa-arrow-left"></i> Back
+                    </Link>
+                    <button type="submit" className="btn btn-primary ml-2">
+                      <i className="fa fa-save"></i> Save
+                    </button>
+                  </div>
                 )}
               </div>
             </form>
