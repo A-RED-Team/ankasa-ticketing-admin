@@ -12,7 +12,7 @@ const index = () => {
         </div>
         {/* Default to the left */}
         <strong>
-          Copyright &copy; 2022 <a href="#">Team Hore</a>.
+          Copyright &copy; 2022 <a href="#">A R</a>.
         </strong>{' '}
         All rights reserved.
       </footer>
