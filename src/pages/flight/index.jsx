@@ -61,7 +61,7 @@ const index = () => {
                         </tr>
                       </thead>
                       <tbody>
-                        {allFlight.data.data.map((item, i) => (
+                        {allFlight.data?.data?.map((item, i) => (
                           <tr key={i}>
                             <td>{i + 1}</td>
                             <td>{item.airlinesname}</td>

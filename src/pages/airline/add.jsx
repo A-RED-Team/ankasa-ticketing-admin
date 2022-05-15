@@ -1,12 +1,70 @@
-import React, { useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import { APP_NAME } from '../../helpers/env';
 import ContentHeader from '../../components/content-header';
+import swal from 'sweetalert2';
+import { addAirline } from '../../redux/actions/addAirline';
+import { toastr } from '../../utils/toast';
 
 const add = () => {
-  useEffect(() => {
-    document.title = `${APP_NAME} - Add Airline`;
-  }, []);
+  const navigate = useNavigate();
+  const [name, setName] = useState(null);
+  const [image, setImage] = useState(null);
+  const [loading, setLoading] = useState(null);
+
+  const onSubmit = (e) => {
+    e.preventDefault();
+    setLoading(true);
+    if (name == null) {
+      swal.fire({
+        title: 'Error!',
+        text: 'Name form cannot be empty',
+        icon: 'error'
+      });
+    } else if (image == null) {
+      swal.fire({
+        title: 'Error!',
+        text: 'Image form cannot be empty',
+        icon: 'error'
+      });
+    } else {
+      const data = new FormData();
+      data.append('name', name);
+      data.append('image', image);
+
+      addAirline(data)
+        .then((res) => {
+          swal
+            .fire({
+              title: 'Success!',
+              text: res.message,
+              icon: 'success'
+            })
+            .then(() => {
+              navigate('/airline');
+            });
+        })
+        .catch((err) => {
+          if (err.response.data.message === 'validation failed') {
+            const error = err.response.data.error;
+            error.map((e) => toastr(e, 'error'));
+          } else {
+            swal.fire({
+              title: 'Error!',
+              text: err.response.data.message,
+              icon: 'error'
+            });
+          }
+        })
+        .finally(() => {
+          setLoading(false);
+        });
+    }
+  };
+
+  // useEffect(() => {
+  //   // document.title = `${APP_NAME} - Add Airline`;
+  // }, []);
 
   return (
     <>
@@ -18,7 +76,6 @@ const add = () => {
           <div className="card card-default">
             <div className="card-header">
               <h3 className="card-title">Add Airline</h3>
-
               <div className="card-tools">
                 <button type="button" className="btn btn-tool" data-card-widget="collapse">
                   <i className="fas fa-minus"></i>
@@ -29,7 +86,7 @@ const add = () => {
               </div>
             </div>
             {/* /.card-header */}
-            <form>
+            <form onSubmit={(e) => onSubmit(e)}>
               <div className="card-body">
                 <div className="row">
                   <div className="col-md-6">
@@ -40,6 +97,7 @@ const add = () => {
                         className="form-control"
                         id="name"
                         placeholder="Enter name"
+                        onChange={(e) => setName(e.target.value)}
                       />
                     </div>
                     {/* /.form-group */}
@@ -49,10 +107,24 @@ const add = () => {
                       <label htmlFor="image">Image</label>
                       <div className="input-group">
                         <div className="custom-file">
-                          <input type="file" className="custom-file-input" id="image" />
-                          <label className="custom-file-label" htmlFor="image">
-                            Choose file
-                          </label>
+                          <input
+                            type="file"
+                            className="custom-file-input"
+                            id="image"
+                            accept=".png, .jpg"
+                            onChange={(e) => {
+                              setImage(e.target.files[0]);
+                            }}
+                          />
+                          {image ? (
+                            <label className="custom-file-label" htmlFor="image">
+                              {image.name}
+                            </label>
+                          ) : (
+                            <label className="custom-file-label" htmlFor="image">
+                              Choose File
+                            </label>
+                          )}
                         </div>
                         <div className="input-group-append">
                           <span className="input-group-text">Upload</span>
@@ -69,9 +141,19 @@ const add = () => {
                 <Link to="/airline" className="btn btn-secondary">
                   <i className="fa fa-arrow-left"></i> Back
                 </Link>
-                <button type="submit" className="btn btn-primary ml-2">
-                  <i className="fa fa-save"></i> Save
-                </button>
+                {loading ? (
+                  <button type="submit" className="btn btn-primary ml-2" disabled>
+                    <span
+                      className="spinner-border spinner-border-sm"
+                      role="status"
+                      aria-hidden="true"
+                    />
+                  </button>
+                ) : (
+                  <button type="submit" className="btn btn-primary ml-2">
+                    <i className="fa fa-save"></i> Save
+                  </button>
+                )}
               </div>
             </form>
           </div>
