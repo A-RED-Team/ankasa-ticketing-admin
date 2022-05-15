@@ -2,7 +2,6 @@ import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { APP_NAME } from '../../helpers/env';
 import ContentHeader from '../../components/content-header';
-import 'moment';
 
 import $ from 'jquery';
 
@@ -100,71 +99,20 @@ const add = () => {
                   <div className="col-md-6">
                     <div className="form-group">
                       <label>Departure Time</label>
-                      <div
-                        className="input-group date"
-                        id="reservationdate"
-                        data-target-input="nearest">
-                        <input
-                          type="text"
-                          className="form-control datetimepicker-input"
-                          data-target="#reservationdate"
-                        />
-                        <div
-                          className="input-group-append"
-                          data-target="#reservationdate"
-                          data-toggle="datetimepicker">
-                          <div className="input-group-text">
-                            <i className="fa fa-clock"></i>
-                          </div>
-                        </div>
-                      </div>
+                      <input type="time" className="form-control" name="" id="" />
                     </div>
                   </div>
                   <div className="col-md-6">
                     <div className="form-group">
                       <label>Arrival Time</label>
-                      <div
-                        className="input-group date"
-                        id="reservationdate"
-                        data-target-input="nearest">
-                        <input
-                          type="text"
-                          className="form-control datetimepicker-input"
-                          data-target="#reservationdate"
-                        />
-                        <div
-                          className="input-group-append"
-                          data-target="#reservationdate"
-                          data-toggle="datetimepicker">
-                          <div className="input-group-text">
-                            <i className="fa fa-clock"></i>
-                          </div>
-                        </div>
-                      </div>
+                      <input type="time" className="form-control" name="" id="" />
                     </div>
                   </div>
                   {/* /.col */}
                   <div className="col-md-6">
                     <div className="form-group">
                       <label>Departure Date</label>
-                      <div
-                        className="input-group date"
-                        id="reservationdate"
-                        data-target-input="nearest">
-                        <input
-                          type="text"
-                          className="form-control datetimepicker-input"
-                          data-target="#reservationdate"
-                        />
-                        <div
-                          className="input-group-append"
-                          data-target="#reservationdate"
-                          data-toggle="datetimepicker">
-                          <div className="input-group-text">
-                            <i className="fa fa-calendar"></i>
-                          </div>
-                        </div>
-                      </div>
+                      <input type="date" className="form-control" name="" id="" />
                     </div>
                   </div>
                   <div className="col-md-6">
@@ -261,16 +209,16 @@ const add = () => {
                       <label>Transit</label>
                       <div className="form-group clearfix">
                         <div className="icheck-primary d-inline">
-                          <input type="checkbox" id="checkboxPrimary1" />
-                          <label htmlFor="checkboxPrimary1">Direct</label>
+                          <input type="radio" id="radioPrimary1" name="r1" />
+                          <label htmlFor="radioPrimary1">Direct</label>
                         </div>
                         <div className="icheck-primary d-inline ml-3">
-                          <input type="checkbox" id="checkboxPrimary2" />
-                          <label htmlFor="checkboxPrimary2">Transit</label>
+                          <input type="radio" id="radioPrimary2" name="r1" />
+                          <label htmlFor="radioPrimary2">Transit</label>
                         </div>
                         <div className="icheck-primary d-inline ml-3">
-                          <input type="checkbox" id="checkboxPrimary3" />
-                          <label htmlFor="checkboxPrimary3">Transit 2+</label>
+                          <input type="checkbox" id="checkboxPrimary4" />
+                          <label htmlFor="checkboxPrimary4">Transit 2+</label>
                         </div>
                       </div>
                     </div>
