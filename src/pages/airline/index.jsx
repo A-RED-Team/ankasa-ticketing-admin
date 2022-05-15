@@ -27,6 +27,14 @@ const index = () => {
     dispatch(getAllAirline());
   }, []);
 
+  useEffect(() => {
+    $(document).ready(function () {
+      setTimeout(function () {
+        $('#example1').DataTable();
+      }, 1000);
+    });
+  }, [allAirline]);
+
   return (
     <>
       <ContentHeader title="Airlines" />
