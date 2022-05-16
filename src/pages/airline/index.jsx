@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { APP_NAME } from '../../helpers/env';
 import ContentHeader from '../../components/content-header';
 import { Link } from 'react-router-dom';
@@ -19,6 +19,7 @@ const index = () => {
   const allAirline = useSelector((state) => {
     return state.allAirlineReducer;
   });
+  const [loading, setloading] = useState(true);
   useEffect(() => {
     document.title = `${APP_NAME} - Management Airline`;
     $(document).ready(function () {
@@ -29,6 +30,11 @@ const index = () => {
 
     dispatch(getAllAirline());
   }, []);
+  useEffect(() => {
+    if (allAirline.data.data) {
+      setloading(false);
+    }
+  }, [allAirline]);
   const goNonActive = (e, id) => {
     e.preventDefault();
     swal
@@ -169,7 +175,7 @@ const index = () => {
                   <Link to="/airline/add" className="btn btn-primary mb-3">
                     <i className="fa fa-plus"></i> Add Airline
                   </Link>
-                  {allAirline?.isLoading ? (
+                  {loading ? (
                     <ContentLoader />
                   ) : allAirline?.isError ? (
                     <div>Error</div>
