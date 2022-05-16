@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { APP_NAME } from '../../helpers/env';
 import { useSelector, useDispatch } from 'react-redux';
 import ContentHeader from '../../components/content-header';
@@ -9,10 +9,14 @@ import { getAllFlight } from '../../redux/actions/allFlight';
 
 import $ from 'jquery';
 import ContentLoader from 'react-content-loader';
+import { changeStatusFlight } from '../../redux/actions/statusFlight';
+import swal from 'sweetalert2';
+import { toastr } from '../../utils/toastr';
+import { deleteFlight } from '../../redux/actions/deleteFlight';
 
 const index = () => {
   const dispatch = useDispatch();
-
+  const [loading, setLoading] = useState(false);
   const allFlight = useSelector((state) => {
     return state.allFlightReducer;
   });
@@ -29,7 +33,125 @@ const index = () => {
       }, 1000);
     });
   }, [allFlight]);
+  useEffect(() => {
+    if (allFlight.data.data) {
+      setLoading(false);
+    }
+  }, [allFlight]);
+  const goNonActive = (e, id) => {
+    e.preventDefault();
+    swal
+      .fire({
+        title: 'Changed status Flight',
+        text: 'Are you sure to change the status to non active ?',
+        icon: 'question',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Yes, I Sure!'
+      })
+      .then(async (nonActivated) => {
+        if (nonActivated.isConfirmed) {
+          try {
+            const res = await changeStatusFlight(id, {
+              isActive: 0
+            });
+            dispatch(getAllFlight());
+            swal.fire({
+              title: 'Success!',
+              text: res.message,
+              icon: 'success'
+            });
+          } catch (err) {
+            if (err.response.data.message === 'validation failed') {
+              const error = err.response.data.error;
+              error.map((e) => toastr(e, 'error'));
+            } else {
+              swal.fire({
+                title: 'Error!',
+                text: err.response.data.message,
+                icon: 'error'
+              });
+            }
+          }
+        }
+      });
+  };
 
+  const goActive = (e, id) => {
+    e.preventDefault();
+    swal
+      .fire({
+        title: 'Changed status Flight',
+        text: 'Are you sure to change the status to active ?',
+        icon: 'question',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Yes, I sure'
+      })
+      .then(async (activated) => {
+        if (activated.isConfirmed) {
+          try {
+            const res = await changeStatusFlight(id, { isActive: 1 });
+            dispatch(getAllFlight());
+            swal.fire({
+              title: 'Success!',
+              text: res.message,
+              icon: 'success'
+            });
+          } catch (err) {
+            if (err.response.data.message === 'validation failed') {
+              const error = err.response.data.error;
+              error.map((e) => toastr(e, 'error'));
+            } else {
+              swal.fire({
+                title: 'Error!',
+                text: err.response.data.message,
+                icon: 'error'
+              });
+            }
+          }
+        }
+      });
+  };
+  const goDelete = (e, id) => {
+    e.preventDefault();
+    swal
+      .fire({
+        title: 'Delete Airline',
+        text: 'Are you sure to delete this airline ?',
+        icon: 'question',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Yes, I sure'
+      })
+      .then(async (deleted) => {
+        if (deleted.isConfirmed) {
+          try {
+            const res = await deleteFlight(id);
+            dispatch(getAllFlight());
+            swal.fire({
+              title: 'Success!',
+              text: res.message,
+              icon: 'success'
+            });
+          } catch (err) {
+            if (err.response.data.message === 'validation failed') {
+              const error = err.response.data.error;
+              error.map((e) => toastr(e, 'error'));
+            } else {
+              swal.fire({
+                title: 'Error!',
+                text: err.response.data.message,
+                icon: 'error'
+              });
+            }
+          }
+        }
+      });
+  };
   return (
     <>
       <ContentHeader title="Flight" />
@@ -47,7 +169,7 @@ const index = () => {
                   <Link to="/flight/add" className="btn btn-primary mb-3">
                     <i className="fa fa-plus"></i> Add Flight
                   </Link>
-                  {allFlight.isLoading ? (
+                  {loading ? (
                     <ContentLoader />
                   ) : allFlight.isError ? (
                     <div>Error</div>
@@ -88,14 +210,33 @@ const index = () => {
                                 <i className="fas fa-pencil-alt"></i>
                                 Edit
                               </a>
-                              <div className="btn btn-info btn-sm ml-2">
-                                <i className="fa-solid fa-power-off"></i>
-                                Status
-                              </div>
-                              <a className="btn btn-danger btn-sm ml-2" href="#">
+                              {item.is_active == 1 ? (
+                                <button
+                                  className="btn btn-info btn-sm ml-2 bg-danger "
+                                  onClick={(e) => {
+                                    goNonActive(e, item.flightid);
+                                  }}>
+                                  <i className="fas fa-power-off"></i>
+                                  Deactivate
+                                </button>
+                              ) : (
+                                <button
+                                  className="btn btn-info btn-sm ml-2 bg-success "
+                                  onClick={(e) => {
+                                    goActive(e, item.flightid, item.is_active);
+                                  }}>
+                                  <i className="fas fa-power-off"></i>
+                                  Activate
+                                </button>
+                              )}
+                              <button
+                                className="btn btn-danger btn-sm ml-2"
+                                onClick={(e) => {
+                                  goDelete(e, item.flightid);
+                                }}>
                                 <i className="fas fa-trash"></i>
                                 Delete
-                              </a>
+                              </button>
                             </td>
                           </tr>
                         ))}
