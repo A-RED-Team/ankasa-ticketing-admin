@@ -16,16 +16,19 @@ const index = () => {
   const allFlight = useSelector((state) => {
     return state.allFlightReducer;
   });
+
   useEffect(() => {
     document.title = `${APP_NAME} - Management Ticket`;
+    dispatch(getAllFlight());
+  }, []);
+
+  useEffect(() => {
     $(document).ready(function () {
-      setTimeout(function () {
+      setTimeout(() => {
         $('#example1').DataTable();
       }, 1000);
     });
-    dispatch(getAllFlight());
-    console.log(allFlight);
-  }, []);
+  }, [allFlight]);
 
   return (
     <>
