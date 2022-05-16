@@ -78,6 +78,7 @@ const index = () => {
         }
       });
   };
+
   const goActive = (e, id) => {
     e.preventDefault();
     swal
@@ -115,6 +116,7 @@ const index = () => {
         }
       });
   };
+
   const goDelete = (e, id) => {
     e.preventDefault();
     swal
