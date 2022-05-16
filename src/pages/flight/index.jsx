@@ -3,7 +3,7 @@ import { APP_NAME } from '../../helpers/env';
 import { useSelector, useDispatch } from 'react-redux';
 import ContentHeader from '../../components/content-header';
 import { Link } from 'react-router-dom';
-import moment from 'moment';
+// import moment from 'moment';
 
 import { getAllFlight } from '../../redux/actions/allFlight';
 
@@ -68,7 +68,7 @@ const index = () => {
                           <tr key={i}>
                             <td>{i + 1}</td>
                             <td>{item.airlinesname}</td>
-                            <td>{moment(item.departuredate).format('dddd,DD-MM-YYYY')}</td>
+                            <td>{item.departuredate}</td>
                             <td>{item.picname}</td>
                             <td>
                               {item.is_active == 1 ? (
@@ -78,7 +78,9 @@ const index = () => {
                               )}
                             </td>
                             <td className="text-center">
-                              <a className="btn btn-primary btn-sm" href="#">
+                              <a
+                                className="btn btn-primary btn-sm"
+                                href={`flight/view/${item.flightid}`}>
                                 <i className="fas fa-eye"></i>
                                 View
                               </a>

@@ -1,11 +1,27 @@
 import React, { useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import { APP_NAME } from '../../helpers/env';
 import ContentHeader from '../../components/content-header';
+// import moment from 'moment';
+
+import { getdetailFlight } from '../../redux/actions/detailFlight';
 
 import $ from 'jquery';
+import { useDispatch, useSelector } from 'react-redux';
+import ContentLoader from 'react-content-loader';
 
 const view = () => {
+  const usd = new Intl.NumberFormat('en-US', {
+    style: 'currency',
+    currency: 'USD'
+  });
+  // const [day, setDay] = useState('');
+  // const weekday = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+  const dispatch = useDispatch();
+  const detailFlight = useSelector((state) => {
+    return state.detailFlightReducer;
+  });
+  const { id } = useParams();
   useEffect(() => {
     document.title = `${APP_NAME} - View Flight`;
     $(document).ready(function () {
@@ -19,6 +35,7 @@ const view = () => {
         // });
       }, 1000);
     });
+    dispatch(getdetailFlight(id));
   }, []);
 
   return (
@@ -43,185 +60,131 @@ const view = () => {
             </div>
             {/* /.card-header */}
             <form>
-              <div className="card-body">
+              <div className="card-body container-fluid">
                 <div className="row">
-                  <div className="col-md-6">
-                    <div className="form-group">
-                      <label>Airline</label>
-                      <select
-                        className="form-control select2"
-                        style={{ width: '100%', height: 'auto' }}>
-                        <option selected="selected">Garuda Indonesia</option>
-                        <option>Lion Air</option>
-                        <option>Batik Air</option>
-                      </select>
-                    </div>
-                    {/* /.form-group */}
-                  </div>
-                  <div className="col-md-6">
-                    <div className="form-group">
-                      <label htmlFor="code">Code</label>
-                      <input
-                        type="text"
-                        className="form-control"
-                        id="code"
-                        placeholder="Enter code"
-                      />
-                    </div>
-                  </div>
-                  {/* /.col */}
-                  <div className="col-md-6">
-                    <div className="form-group">
-                      <label>Departure City</label>
-                      <select
-                        className="form-control select2"
-                        style={{ width: '100%', height: 'auto' }}>
-                        <option selected="selected">Jakarta</option>
-                        <option>Tokyo</option>
-                        <option>Barcelona</option>
-                      </select>
-                    </div>
-                  </div>
-                  <div className="col-md-6">
-                    <div className="form-group">
-                      <label>Arrival City</label>
-                      <select
-                        className="form-control select2"
-                        style={{ width: '100%', height: 'auto' }}>
-                        <option selected="selected">Jakarta</option>
-                        <option>Tokyo</option>
-                        <option>Barcelona</option>
-                      </select>
-                    </div>
-                  </div>
-                  {/* /.col */}
-
-                  <div className="col-md-6">
-                    <div className="form-group">
-                      <label>Departure Time</label>
-                      <input type="time" className="form-control" name="" id="" />
-                    </div>
-                  </div>
-                  <div className="col-md-6">
-                    <div className="form-group">
-                      <label>Arrival Time</label>
-                      <input type="time" className="form-control" name="" id="" />
-                    </div>
-                  </div>
-                  {/* /.col */}
-                  <div className="col-md-6">
-                    <div className="form-group">
-                      <label>Departure Date</label>
-                      <input type="date" className="form-control" name="" id="" />
-                    </div>
-                  </div>
-                  <div className="col-md-6">
-                    <div className="form-group">
-                      <label>Class</label>
-                      <select
-                        className="form-control select2"
-                        style={{ width: '100%', height: 'auto' }}>
-                        <option selected="selected">Economy</option>
-                        <option>Business</option>
-                        <option>First Class</option>
-                      </select>
-                    </div>
-                  </div>
-                  {/* /.col */}
-                  <div className="col-md-6">
-                    <div className="form-group">
-                      <label>Type</label>
-                      <select
-                        className="form-control select2"
-                        style={{ width: '100%', height: 'auto' }}>
-                        <option selected="selected">One Way</option>
-                        <option>Round Trip</option>
-                      </select>
-                    </div>
-                  </div>
-                  <div className="col-md-6">
-                    <div className="form-group">
-                      <label htmlFor="code">Adult</label>
-                      <input
-                        type="number"
-                        className="form-control"
-                        id="code"
-                        placeholder="Enter adult"
-                      />
-                    </div>
-                  </div>
-                  {/* /.col */}
-                  <div className="col-md-6">
-                    <div className="form-group">
-                      <label htmlFor="code">Child</label>
-                      <input
-                        type="number"
-                        className="form-control"
-                        id="code"
-                        placeholder="Enter child"
-                      />
-                    </div>
-                  </div>
-                  <div className="col-md-6">
-                    <div className="form-group">
-                      <label htmlFor="code">Price</label>
-                      <input
-                        type="text"
-                        className="form-control"
-                        id="code"
-                        placeholder="Enter price"
-                      />
-                    </div>
-                  </div>
-                  {/* /.col */}
-                  <div className="col-md-6">
-                    <div className="form-group">
-                      <label>PIC</label>
-                      <select
-                        className="form-control select2"
-                        style={{ width: '100%', height: 'auto' }}>
-                        <option selected="selected">Peter Parker</option>
-                        <option>Max Smith</option>
-                      </select>
-                    </div>
-                  </div>
-                  <div className="col-md-6">
-                    <div className="form-group">
-                      <label>Facilities</label>
-                      <div className="form-group clearfix">
-                        <div className="icheck-primary d-inline">
-                          <input type="checkbox" id="checkboxPrimary1" />
-                          <label htmlFor="checkboxPrimary1">Wifi</label>
-                        </div>
-                        <div className="icheck-primary d-inline ml-3">
-                          <input type="checkbox" id="checkboxPrimary2" />
-                          <label htmlFor="checkboxPrimary2">Luggage</label>
-                        </div>
-                        <div className="icheck-primary d-inline ml-3">
-                          <input type="checkbox" id="checkboxPrimary3" />
-                          <label htmlFor="checkboxPrimary3">Meal</label>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="col-md-6">
-                    <div className="form-group">
-                      <label>Transit</label>
-                      <div className="form-group clearfix">
-                        <div className="icheck-primary d-inline">
-                          <input type="radio" id="radioPrimary1" name="r1" />
-                          <label htmlFor="radioPrimary1">Direct</label>
-                        </div>
-                        <div className="icheck-primary d-inline ml-3">
-                          <input type="radio" id="radioPrimary2" name="r1" />
-                          <label htmlFor="radioPrimary2">Transit</label>
-                        </div>
-                        <div className="icheck-primary d-inline ml-3">
-                          <input type="checkbox" id="checkboxPrimary4" />
-                          <label htmlFor="checkboxPrimary4">Transit 2+</label>
-                        </div>
-                      </div>
-                    </div>
+                  <div className="col-md-12">
+                    {detailFlight.isLoading ? (
+                      <ContentLoader />
+                    ) : detailFlight.isError ? (
+                      <div>Error</div>
+                    ) : (
+                      <table className="col-md-12 mt-md-5 table-bordered text-capitalize text-center">
+                        <thead>
+                          <tr className="">
+                            <th className="col-lg-6 col-md-6 col-sm-6 col-xs-6">Data</th>
+                            <th className="col-lg-6 col-md-6 col-sm-6 col-xs-6">Value</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td>Pilot In Command Name</td>
+                            <td>{detailFlight?.data?.data?.picname}</td>
+                          </tr>
+                          <tr>
+                            <td>Code</td>
+                            <td>{detailFlight?.data?.data?.code}</td>
+                          </tr>
+                          <tr>
+                            <td>Airlines Name</td>
+                            <td>{detailFlight?.data?.data?.airlinesname}</td>
+                          </tr>
+                          <tr>
+                            <td>Departure City</td>
+                            <td>{detailFlight?.data?.data?.departurecityname}</td>
+                          </tr>
+                          <tr>
+                            <td>Arrival City</td>
+                            <td>{detailFlight?.data?.data?.arrivalcityname}</td>
+                          </tr>
+                          <tr>
+                            <td>Departure Date</td>
+                            <td>{detailFlight?.data?.data?.departuredate}</td>
+                          </tr>
+                          <tr>
+                            <td>Departure time</td>
+                            <td>{detailFlight?.data?.data?.departure_time}</td>
+                          </tr>
+                          <tr>
+                            <td>Arrival time</td>
+                            <td>{detailFlight?.data?.data?.arrival_time}</td>
+                          </tr>
+                          <tr>
+                            <td>Class</td>
+                            {detailFlight?.data?.data?.class == 0 ? (
+                              <td>Economy</td>
+                            ) : detailFlight?.data?.data?.class == 1 ? (
+                              <td>Business</td>
+                            ) : (
+                              <td>First Class</td>
+                            )}
+                          </tr>
+                          <tr>
+                            <td>Type</td>
+                            {detailFlight?.data?.data?.type == 0 ? (
+                              <td>one way</td>
+                            ) : (
+                              <td>round Trip</td>
+                            )}
+                          </tr>
+                          <tr>
+                            <td>bench for adults</td>
+                            <td>{detailFlight?.data?.data?.adult}</td>
+                          </tr>
+                          <tr>
+                            <td>bench for child</td>
+                            <td>{detailFlight?.data?.data?.child}</td>
+                          </tr>
+                          <tr>
+                            <td>Stock</td>
+                            <td>{detailFlight?.data?.data?.stock}</td>
+                          </tr>
+                          <tr>
+                            <td>Transit</td>
+                            {detailFlight?.data?.data?.direct == 1 ? (
+                              <td>Direct</td>
+                            ) : detailFlight?.data?.data?.transit == 1 ? (
+                              <td>transit</td>
+                            ) : detailFlight?.data?.data?.more_transit == 1 ? (
+                              <td>transit 2+</td>
+                            ) : (
+                              <div></div>
+                            )}
+                          </tr>
+                          <tr>
+                            <td>luggage facilities</td>
+                            {detailFlight?.data?.data?.luggage == 1 ? <td>Yes</td> : <td>No</td>}
+                          </tr>
+                          <tr>
+                            <td>in-flight meal facilities</td>
+                            {detailFlight?.data?.data?.meal == 1 ? <td>Yes</td> : <td>No</td>}
+                          </tr>
+                          <tr>
+                            <td>wifi facilities</td>
+                            {detailFlight?.data?.data?.wifi == 1 ? <td>Yes</td> : <td>No</td>}
+                          </tr>
+                          <tr>
+                            <td>Price</td>
+                            <td>{usd.format(detailFlight?.data?.data?.price)}</td>
+                          </tr>
+                          <tr>
+                            <td>Rating</td>
+                            <td>{detailFlight?.data?.data?.rating}</td>
+                          </tr>
+                          <tr>
+                            <td>Total Reviewed</td>
+                            <td>{detailFlight?.data?.data?.total_reviewed}</td>
+                          </tr>
+                          <tr>
+                            <td>Status Flight</td>
+                            {detailFlight?.data?.data?.is_active == 1 ? (
+                              <td>Active</td>
+                            ) : (
+                              <td>Non active</td>
+                            )}
+                          </tr>
+                        </tbody>
+                      </table>
+                    )}
                   </div>
                 </div>
                 {/* /.row */}
