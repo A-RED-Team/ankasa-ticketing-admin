@@ -176,7 +176,7 @@ const view = () => {
                           </tr>
                           <tr>
                             <td>Status Flight</td>
-                            {detailFlight?.data?.dat?.is_active == 1 ? (
+                            {detailFlight?.data?.data?.is_active == 1 ? (
                               <td>Active</td>
                             ) : (
                               <td>Non active</td>
