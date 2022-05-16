@@ -57,16 +57,12 @@ const index = () => {
             const res = await changeStatusAirline(id, {
               isActive: 0
             });
-            swal
-              .fire({
-                title: 'Success!',
-                text: res.message,
-                icon: 'success'
-              })
-              .then(() => {
-                dispatch(getAllAirline());
-                // navigate('/airline');
-              });
+            dispatch(getAllAirline());
+            swal.fire({
+              title: 'Success!',
+              text: res.message,
+              icon: 'success'
+            });
           } catch (err) {
             if (err.response.data.message === 'validation failed') {
               const error = err.response.data.error;
@@ -98,15 +94,12 @@ const index = () => {
         if (activated.isConfirmed) {
           try {
             const res = await changeStatusAirline(id, { isActive: 1 });
-            swal
-              .fire({
-                title: 'Success!',
-                text: res.message,
-                icon: 'success'
-              })
-              .then(() => {
-                dispatch(getAllAirline());
-              });
+            dispatch(getAllAirline());
+            swal.fire({
+              title: 'Success!',
+              text: res.message,
+              icon: 'success'
+            });
           } catch (err) {
             if (err.response.data.message === 'validation failed') {
               const error = err.response.data.error;
@@ -138,15 +131,12 @@ const index = () => {
         if (deleted.isConfirmed) {
           try {
             const res = await deleteAirline(id);
-            swal
-              .fire({
-                title: 'Success!',
-                text: res.message,
-                icon: 'success'
-              })
-              .then(() => {
-                dispatch(getAllAirline());
-              });
+            dispatch(getAllAirline());
+            swal.fire({
+              title: 'Success!',
+              text: res.message,
+              icon: 'success'
+            });
           } catch (err) {
             if (err.response.data.message === 'validation failed') {
               const error = err.response.data.error;
