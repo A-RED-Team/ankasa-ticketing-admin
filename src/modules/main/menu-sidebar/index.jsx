@@ -1,20 +1,44 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { Link, useNavigate, useLocation } from 'react-router-dom';
+import { useSelector, useDispatch } from 'react-redux';
+import { getDetailUser } from '../../../redux/actions/user';
+import jwt_decode from 'jwt-decode';
+import { APP_STAGING, APP_DEV, APP_PROD } from '../../../helpers/env';
+import img from '../../../assets/images/vector 3.png';
 
 const index = () => {
+  const navigate = useNavigate();
+  const location = useLocation();
+  const dispatch = useDispatch();
+  const user = useSelector((state) => state.user);
+  const token = localStorage.getItem('token');
+  const decoded = jwt_decode(token);
+
+  useEffect(() => {
+    if (decoded) {
+      dispatch(getDetailUser(decoded.id));
+    }
+  }, []);
+
+  const logout = () => {
+    localStorage.clear();
+    return navigate('/login');
+  };
+
   return (
     <>
       {/* Main Sidebar Container */}
       <aside className="main-sidebar sidebar-dark-primary elevation-4">
         {/* Brand Logo */}
-        <a href="index3.html" className="brand-link">
+        <Link to="/" className="brand-link">
           <img
-            src="dist/img/AdminLTELogo.png"
-            alt="AdminLTE Logo"
-            className="brand-image img-circle elevation-3"
+            src={img}
+            alt="Ankasa Ticketing"
+            className="brand-image elevation-3"
             style={{ opacity: '.8' }}
           />
-          <span className="brand-text font-weight-light">AdminLTE 3</span>
-        </a>
+          <span className="brand-text font-weight-light">Admin Ankasa</span>
+        </Link>
 
         {/* Sidebar */}
         <div className="sidebar">
@@ -22,14 +46,18 @@ const index = () => {
           <div className="user-panel mt-3 pb-3 mb-3 d-flex">
             <div className="image">
               <img
-                src="dist/img/user2-160x160.jpg"
+                src={`${
+                  APP_STAGING === 'dev'
+                    ? `${APP_DEV}uploads/users/${user.data?.photo}`
+                    : `${APP_PROD}uploads/users/${user.data?.photo}`
+                }`}
                 className="img-circle elevation-2"
                 alt="User Image"
               />
             </div>
             <div className="info">
               <a href="#" className="d-block">
-                Alexander Pierce
+                {user.data?.username}
               </a>
             </div>
           </div>
@@ -60,36 +88,40 @@ const index = () => {
               data-accordion="false">
               {/* Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library */}
-              <li className="nav-item menu-open">
-                <a href="#" className="nav-link active">
+              <li className="nav-item">
+                <Link
+                  to="/"
+                  className={`${location.pathname === '/' ? 'nav-link active' : 'nav-link'}`}>
                   <i className="nav-icon fas fa-tachometer-alt"></i>
-                  <p>
-                    Starter Pages
-                    <i className="right fas fa-angle-left"></i>
-                  </p>
-                </a>
-                <ul className="nav nav-treeview">
-                  <li className="nav-item">
-                    <a href="#" className="nav-link active">
-                      <i className="far fa-circle nav-icon"></i>
-                      <p>Active Page</p>
-                    </a>
-                  </li>
-                  <li className="nav-item">
-                    <a href="#" className="nav-link">
-                      <i className="far fa-circle nav-icon"></i>
-                      <p>Inactive Page</p>
-                    </a>
-                  </li>
-                </ul>
+                  <p> Dashboard</p>
+                </Link>
+              </li>
+              <li className="nav-header">MANAGEMENT</li>
+              <li className="nav-item">
+                <Link
+                  to="/airline"
+                  className={`${
+                    location.pathname.includes('/airline') ? 'nav-link active' : 'nav-link'
+                  }`}>
+                  <i className="nav-icon fas fa-plane"></i>
+                  <p> Airline</p>
+                </Link>
               </li>
               <li className="nav-item">
-                <a href="#" className="nav-link">
-                  <i className="nav-icon fas fa-th"></i>
-                  <p>
-                    Simple Link
-                    <span className="right badge badge-danger">New</span>
-                  </p>
+                <Link
+                  to="/flight"
+                  className={`${
+                    location.pathname.includes('/flight') ? 'nav-link active' : 'nav-link'
+                  }`}>
+                  <i className="nav-icon fas fa-plane-departure"></i>
+                  <p> Flight</p>
+                </Link>
+              </li>
+              <li className="nav-header">LOGOUT</li>
+              <li className="nav-item">
+                <a onClick={logout} className="nav-link">
+                  <i className="nav-icon fas fa-sign-out-alt"></i>
+                  <p> Logout</p>
                 </a>
               </li>
             </ul>

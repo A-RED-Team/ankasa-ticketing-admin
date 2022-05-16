@@ -3,7 +3,7 @@ import 'react-toastify/dist/ReactToastify.css';
 
 toast.configure();
 
-export const toast = (message, type = 'error') => {
+export const toastr = (message, type = 'error') => {
   const config = {
     position: 'top-right',
     autoClose: 2000,

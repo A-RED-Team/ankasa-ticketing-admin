@@ -16,10 +16,10 @@ const Dashboard = () => {
                 <div className="inner">
                   <h3>150</h3>
 
-                  <p>New Orders</p>
+                  <p>Airline</p>
                 </div>
                 <div className="icon">
-                  <i className="ion ion-bag"></i>
+                  <i className="ion ion-plane"></i>
                 </div>
                 <a href="#" className="small-box-footer">
                   More info <i className="fas fa-arrow-circle-right"></i>
@@ -36,7 +36,7 @@ const Dashboard = () => {
                     250
                   </h3>
 
-                  <p>Bounce Rate</p>
+                  <p>Flight</p>
                 </div>
                 <div className="icon">
                   <i className="ion ion-stats-bars"></i>
@@ -53,10 +53,10 @@ const Dashboard = () => {
                 <div className="inner">
                   <h3>44</h3>
 
-                  <p>User Registrations</p>
+                  <p>Customer</p>
                 </div>
                 <div className="icon">
-                  <i className="ion ion-person-add"></i>
+                  <i className="ion ion-person"></i>
                 </div>
                 <a href="#" className="small-box-footer">
                   More info <i className="fas fa-arrow-circle-right"></i>
@@ -70,10 +70,10 @@ const Dashboard = () => {
                 <div className="inner">
                   <h3>65</h3>
 
-                  <p>Unique Visitors</p>
+                  <p>Schedule</p>
                 </div>
                 <div className="icon">
-                  <i className="ion ion-pie-graph"></i>
+                  <i className="ion ion-calendar"></i>
                 </div>
                 <a href="#" className="small-box-footer">
                   More info <i className="fas fa-arrow-circle-right"></i>

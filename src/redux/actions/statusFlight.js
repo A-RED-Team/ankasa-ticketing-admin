@@ -1,13 +1,15 @@
 import axios from '../../utils/axios';
 
-export const login = (data) => {
+export const changeStatusFlight = (id, status) => {
   return new Promise((resolve, reject) => {
     axios
-      .post(`auth/login`, data)
+      .put(`flight/mode/${id}`, status)
       .then((res) => {
+        // console.log(res);
         resolve(res.data);
       })
       .catch((err) => {
+        // console.log(err);
         reject(err);
       });
   });

@@ -1,9 +1,13 @@
 import axios from '../../utils/axios';
 
-export const login = (data) => {
+export const updateAirline = (data, id) => {
   return new Promise((resolve, reject) => {
     axios
-      .post(`auth/login`, data)
+      .put(`airline/${id}`, data, {
+        headers: {
+          'Content-Type': `multipart/form-data`
+        }
+      })
       .then((res) => {
         resolve(res.data);
       })

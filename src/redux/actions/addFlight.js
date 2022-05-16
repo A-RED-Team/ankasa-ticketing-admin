@@ -1,9 +1,9 @@
 import axios from '../../utils/axios';
 
-export const login = (data) => {
+export const addFlight = (data) => {
   return new Promise((resolve, reject) => {
     axios
-      .post(`auth/login`, data)
+      .post(`flight`, data)
       .then((res) => {
         resolve(res.data);
       })

@@ -5,7 +5,21 @@
 
 @import '~admin-lte/plugins/fontawesome-free/css/all.min.css';
 @import '~admin-lte/plugins/icheck-bootstrap/icheck-bootstrap.min.css';
-/* @import '~admin-lte/dist/css/adminlte.css'; */
+
+/* DataTables */
+@import '~admin-lte/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css';
+@import '~admin-lte/plugins/datatables-responsive/css/responsive.bootstrap4.min.css';
+@import '~admin-lte/plugins/datatables-buttons/css/buttons.bootstrap4.min.css';
+
+/* daterange picker */
+@import '~admin-lte/plugins/daterangepicker/daterangepicker.css';
+
+/* Tempusdominus Bootstrap 4 */
+@import '~admin-lte/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css';
+
+/* Select2 */
+@import '~admin-lte/plugins/select2/css/select2.min.css';
+@import '~admin-lte/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css';
 
 html {
   height: 100% !important;
