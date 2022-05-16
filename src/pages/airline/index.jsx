@@ -38,7 +38,7 @@ const index = () => {
       setloading(false);
     }
   }, [allAirline]);
-  
+
   const goNonActive = (e, id) => {
     e.preventDefault();
     swal
