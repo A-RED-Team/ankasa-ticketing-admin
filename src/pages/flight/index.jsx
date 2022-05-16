@@ -206,7 +206,9 @@ const index = () => {
                                 <i className="fas fa-eye"></i>
                                 View
                               </a>
-                              <a className="btn btn-info btn-sm ml-2" href="#">
+                              <a
+                                className="btn btn-info btn-sm ml-2"
+                                href={`flight/edit/${item.flightid}`}>
                                 <i className="fas fa-pencil-alt"></i>
                                 Edit
                               </a>
