@@ -22,7 +22,7 @@ const index = () => {
   });
 
   useEffect(() => {
-    document.title = `${APP_NAME} - Management Ticket`;
+    document.title = `${APP_NAME} - Management Flight`;
     dispatch(getAllFlight());
   }, []);
 
