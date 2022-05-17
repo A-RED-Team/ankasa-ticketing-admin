@@ -61,16 +61,19 @@ const add = () => {
         // $('.select2bs4').select2({
         //   theme: 'bootstrap4'
         // });
-        setLoading(true);
-        dispatch(getAllAirline());
-        dispatch(getAllCity());
-        dispatch(getAllPic());
-        setLoading(false);
-        if (allAirline.isError == true || allCity.isError == true || allPic.isError == true) {
-          SetErr(true);
-        }
       }, 1000);
     });
+  }, []);
+
+  useEffect(() => {
+    setLoading(true);
+    dispatch(getAllAirline());
+    dispatch(getAllCity());
+    dispatch(getAllPic());
+    setLoading(false);
+    if (allAirline.isError == true || allCity.isError == true || allPic.isError == true) {
+      SetErr(true);
+    }
   }, []);
 
   const onSubmit = (e) => {
