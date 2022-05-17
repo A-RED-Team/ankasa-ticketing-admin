@@ -18,6 +18,11 @@ import AddFlight from '../pages/flight/add';
 import EditFlight from '../pages/flight/edit';
 import ViewFlight from '../pages/flight/view';
 
+import Booking from '../pages/booking';
+import AddBooking from '../pages/booking/add';
+import EditBooking from '../pages/booking/edit';
+import ViewBooking from '../pages/booking/view';
+
 const router = () => {
   return (
     <BrowserRouter>
@@ -37,6 +42,10 @@ const router = () => {
             <Route path="flight/add" element={<AddFlight />} />
             <Route path="flight/edit/:id" element={<EditFlight />} />
             <Route path="flight/view/:id" element={<ViewFlight />} />
+            <Route path="booking" element={<Booking />} />
+            <Route path="booking/add" element={<AddBooking />} />
+            <Route path="booking/edit/:id" element={<EditBooking />} />
+            <Route path="booking/view/:id" element={<ViewBooking />} />
           </Route>
         </Route>
       </Routes>

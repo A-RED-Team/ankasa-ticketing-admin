@@ -117,6 +117,16 @@ const index = () => {
                   <p> Flight</p>
                 </Link>
               </li>
+              <li className="nav-item">
+                <Link
+                  to="/booking"
+                  className={`${
+                    location.pathname.includes('/booking') ? 'nav-link active' : 'nav-link'
+                  }`}>
+                  <i className="nav-icon fas fa-calendar"></i>
+                  <p> Booking</p>
+                </Link>
+              </li>
               <li className="nav-header">LOGOUT</li>
               <li className="nav-item">
                 <a onClick={logout} className="nav-link">
