@@ -246,14 +246,14 @@ const edit = () => {
 
   return (
     <>
-      <ContentHeader title="Add Flight" />
+      <ContentHeader title="Edit Flight" />
       {/* Main content */}
       <section className="content">
         <div className="container-fluid">
           {/* SELECT2 EXAMPLE */}
           <div className="card card-default">
             <div className="card-header">
-              <h3 className="card-title">Add Flight</h3>
+              <h3 className="card-title">Edit Flight</h3>
 
               <div className="card-tools">
                 <button type="button" className="btn btn-tool" data-card-widget="collapse">

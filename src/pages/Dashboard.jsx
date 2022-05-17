@@ -70,7 +70,7 @@ const Dashboard = () => {
                 <div className="inner">
                   <h3>65</h3>
 
-                  <p>Schedule</p>
+                  <p>Booking</p>
                 </div>
                 <div className="icon">
                   <i className="ion ion-calendar"></i>
