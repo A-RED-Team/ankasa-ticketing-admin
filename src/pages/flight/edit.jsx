@@ -80,7 +80,7 @@ const edit = () => {
     });
   }, []);
   useEffect(() => {
-    if (detailFlight.data) {
+    if (detailFlight.data.data) {
       setForm({
         airlineId: detailFlight.data.data.airline_id,
         departureCity: detailFlight.data.data.departurecityid,
