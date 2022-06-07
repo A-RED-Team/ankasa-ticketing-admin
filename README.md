@@ -1,12 +1,12 @@
 <div id="top"></div>
 <p align="center">
   <a href="https://github.com/altrawan/ankasa-ticketing-admin">
-    <img src="https://github.com/altrawan/ankasa-ticketing-frontend/raw/master/screenshoots/logo.png"  width="200px" alt="Logo">
+    <img src="./screenshoots/Logo.png"  width="200px" alt="Logo">
   </a>
 </p>
 <h3 align="center">Ankasa Ticketing Admin</h3>
 <p align="center">
-  Find your Flight and explore the world with us.
+  Ankasa Ticketing Management Data.
   <br/>
   <a href="#table-of-contents">
     <strong>Explore the docs »</strong>
@@ -38,12 +38,16 @@
 * [Getting Started](#getting-started)
   * [Prerequisites](#prerequisites)
   * [Installation](#installation)
+  * [Setup .env](#setup-env)
 * [Screenshots](#screenshoots)
+* [Contributing](#contributing)
 * [Related Project](#related-project)
 * [Contributors](#contributors)
+* [License](#license)
 
 <!-- ABOUT THE PROJECT -->
 ## About The Project
+- 
 
 ### Built With
 This app was built with some technologies below:
@@ -54,6 +58,7 @@ This app was built with some technologies below:
 * [React Redux](https://react-redux.js.org/introduction/getting-started)
 * [Bootstrap](https://getbootstrap.com/)
 * [Reactstrap](https://reactstrap.github.io/)
+* [Admin LTE](https://adminlte.io/)
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
@@ -62,48 +67,78 @@ This app was built with some technologies below:
 
 ### Prerequisites
 
-Before going to the installation stage there are some software that must be installed first.
+This is an example of how to list things you need to use the software and how to install them.
 
-* [NodeJs](https://nodejs.org/en/download/)
-
-<p align="right">(<a href="#top">back to top</a>)</p>
+* [nodejs](https://nodejs.org/en/download/)
 
 ### Installation
 
-If you want to run this project locally, We recommend you to configure the [back-end](https://github.com/altrawan/ankasa-ticketing-backend) first before configuring this repo front-end.
-1. Clone the repo
+- Clone This Front End Repo
 ```
-git clone https://github.com/altrawan/ankasa-ticketing-admin
+git clone https://github.com/altrawan/ankasa-ticketing-frontend.git
 ```
- 2. Install NPM packages
+- Go To Folder Repo
+```
+cd ankasa-ticketing-frontend
+```
+- Install Module
 ```
 npm install
 ```
-3. Add .env file at root folder project, and add following
+- <a href="#setup-env">Setup .env</a>
+- Type ` npm run dev` To Start Website
+- Type ` npm run start` To Start Production
+
+<p align="right">(<a href="#top">back to top</a>)</p>
+
+### Setup .env
+Create .env file in your root project folder.
 ```
 # app
-REACT_APP_NAME=Ankasa Ticketing
-REACT_APP_VERSION=1.0.0
+REACT_APP_NAME=[APP NAME]
+REACT_APP_VERSION=[APP VERSION]
 
 # mode
-REACT_APP_DEV=http://localhost:4000/
-REACT_APP_PROD=https://ankasa-ticketing-app.herokuapp.com/
-REACT_APP_STAGING=prod / dev
-```
-4. Start the Application
-```
-npm start
+REACT_APP_DEV=[BACKEND_URL_DEVELOPMENT]
+REACT_APP_PROD=[BACKEND_URL_PRODUCTION]
+REACT_APP_STAGING=[dev / prod]
 ```
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
 ## Screenshoots
-<details>
-  <summary>
-    Login Page
-  </summary>
-<img src="#" alt="Explore" />
-</details>
+
+<p align="center" display=flex>
+<table>
+ 
+  <tr>
+    <td><image src="screenshoots/Login Page.png" alt="Login Page" width=100%></td>
+    <td><image src="screenshoots/Dashboard Page.png" alt="Dashboard Page" width=100%/></td>
+  </tr>
+   <tr>
+    <td>Login Page</td>
+    <td>Dashboard Page</td>
+  </tr>
+  
+  <tr>
+    <td><image src="screenshoots/List Flight Page.png" alt="List Flight Page" width=100%></td>
+    <td><image src="screenshoots/View Flight Page.png" alt="View Flight Page" width=100%/></td>
+  </tr>
+  <tr>
+    <td>List Flight Page</td>
+    <td>View Flight Page</td>
+  </tr>
+
+  <tr>
+    <td><image src="screenshoots/Add Flight Page.png" alt="Add Flight Page" width=100%></td>
+    <td><image src="screenshoots/Edit Flight Page.png" alt="Edit Flight Page" width=100%></td>
+  </tr>
+  <tr>
+      <td>Add Flight Page</td>
+      <td>Edit Flight Page</td>
+  </tr>
+</table>
+</p>
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
@@ -120,7 +155,13 @@ Contributions are what make the open source community such an amazing place to b
 <p align="right">(<a href="#top">back to top</a>)</p>
 
 ## Related Project
-- [Flight Booking API](https://github.com/altrawan/ankasa-ticketing-backend)
+:rocket: [`Backend Ankasa Ticketing`](https://github.com/altrawan/ankasa-ticketing-backend)
+
+:rocket: [`Frontend Ankasa Ticketing`](https://github.com/altrawan/ankasa-ticketing-frontend)
+
+:rocket: [`Frontend Ankasa Ticketing Admin`](https://github.com/altrawan/ankasa-ticketing-admin)
+
+:rocket: [`Demo Ankasa Ticketing Admin`](https://bit.ly/ankasa-ticketing-admin)
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
@@ -128,6 +169,12 @@ Contributions are what make the open source community such an amazing place to b
 <center>
   <table>
     <tr>
+      <td align="center">
+        <a href="https://github.com/altrawan">
+          <img width="100" src="https://avatars.githubusercontent.com/u/39686865?v=4" alt="Nur Muhammad Alif Putra Setiawan"><br/>
+          <sub><b>Nur Muhammad Alif Putra Setiawan</b></sub>
+        </a>
+      </td>
       <td align="center">
         <a href="https://github.com/janexmgd">
           <img width="100" src="https://avatars.githubusercontent.com/u/43938494?v=4" alt="Denny Wahyu Prasetio"><br/>
@@ -140,20 +187,13 @@ Contributions are what make the open source community such an amazing place to b
           <sub><b>Edo Prayoga</b></sub>
         </a>
       </td>
-      <td align="center">
-        <a href="https://github.com/altrawan">
-          <img width="100" src="https://avatars.githubusercontent.com/u/39686865?v=4" alt="Nur Muhammad Alif Putra Setiawan"><br/>
-          <sub><b>Nur Muhammad Alif</b></sub>
-        </a>
-      </td>
-      <td align="center">
-        <a href="https://github.com/rifanhidayatulloh">
-          <img width="100" src="https://avatars.githubusercontent.com/u/87940197?v=4" alt="Rif'an Hidayatulloh"><br/>
-          <sub><b>Rif'an Hidayatulloh</b></sub>
-        </a>
-      </td>
     </tr>
   </table>
 </center>
+
+<p align="right">(<a href="#top">back to top</a>)</p>
+
+## License
+Distributed under the [MIT](/LICENSE) License.
 
 <p align="right">(<a href="#top">back to top</a>)</p>
