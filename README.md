@@ -172,19 +172,22 @@ Contributions are what make the open source community such an amazing place to b
       <td align="center">
         <a href="https://github.com/altrawan">
           <img width="100" src="https://avatars.githubusercontent.com/u/39686865?v=4" alt="Nur Muhammad Alif Putra Setiawan"><br/>
-          <sub><b>Nur Muhammad Alif Putra Setiawan</b></sub>
+          <sub><b>Nur Muhammad Alif Putra Setiawan</b></sub> <br/>
+          <sub>Project Manager | Full Stack Web Developer</sub>
         </a>
       </td>
       <td align="center">
         <a href="https://github.com/janexmgd">
           <img width="100" src="https://avatars.githubusercontent.com/u/43938494?v=4" alt="Denny Wahyu Prasetio"><br/>
-          <sub><b>Denny Wahyu Prasetio</b></sub>
+          <sub><b>Denny Wahyu Prasetio</b></sub> <br/>
+          <sub>Full Stack Web Developer</sub>
         </a>
       </td>
       <td align="center">
         <a href="https://github.com/edoprayoga1999">
           <img width="100" src="https://avatars.githubusercontent.com/u/101086199?v=4" alt="Edo Prayoga"><br/>
-          <sub><b>Edo Prayoga</b></sub>
+          <sub><b>Edo Prayoga</b></sub> <br/>
+          <sub>Front End Web Developer</sub>
         </a>
       </td>
     </tr>
