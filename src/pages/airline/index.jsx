@@ -6,7 +6,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import ContentLoader from 'react-content-loader';
 import swal from 'sweetalert2';
 import { toastr } from '../../utils/toastr';
-import { Airline } from '../../assets/images/airline.png';
+import Airline from '../../assets/images/airline.png';
 import { getAllAirline } from '../../redux/actions/allAirlane';
 import { changeStatusAirline } from '../../redux/actions/statusAirline';
 import { deleteAirline } from '../../redux/actions/deleteAirline';
