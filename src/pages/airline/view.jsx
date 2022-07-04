@@ -6,7 +6,7 @@ import ContentLoader from 'react-content-loader';
 import { useDispatch, useSelector } from 'react-redux';
 import { getdetailAirline } from '../../redux/actions/detailAirline';
 import moment from 'moment';
-import { Airline } from '../../assets/images/airline.png';
+import Airline from '../../assets/images/airline.png';
 
 const view = () => {
   const dispatch = useDispatch();
