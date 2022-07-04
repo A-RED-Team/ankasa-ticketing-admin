@@ -58,7 +58,7 @@
     <li><a href="#contributing">Contributing</a></li>
     <li><a href="#related-project">Related Project</a></li>
     <li><a href="#contributing">Contributing</a></li>
-    <li><a href="#contributors">Contributors</a></li>
+    <li><a href="#our-team">Our Team</a></li>
     <li><a href="#license">License</a></li>
   </ol>
 </details>
@@ -187,7 +187,8 @@ Contributions are what make the open source community such an amazing place to b
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
-## Contributors
+## Our Team
+
 <center>
   <table>
     <tr>
@@ -199,10 +200,10 @@ Contributions are what make the open source community such an amazing place to b
         </a>
       </td>
       <td align="center">
-        <a href="https://github.com/janexmgd">
-          <img width="100" src="https://avatars.githubusercontent.com/u/43938494?v=4" alt="Denny Wahyu Prasetyo"><br/>
-          <sub><b>Denny Wahyu Prasetyo</b></sub> <br/>
-          <sub>Full Stack Web Developer</sub>
+        <a href="https://github.com/rifanhidayatulloh">
+          <img width="100" src="https://avatars.githubusercontent.com/u/87940197?v=4" alt="Rif'an Hidayatulloh"><br/>
+          <sub><b>Rif'an Hidayatulloh</b></sub> <br/>
+          <sub>Back End Web Developer</sub>
         </a>
       </td>
       <td align="center">
@@ -210,6 +211,13 @@ Contributions are what make the open source community such an amazing place to b
           <img width="100" src="https://avatars.githubusercontent.com/u/101086199?v=4" alt="Edo Prayoga"><br/>
           <sub><b>Edo Prayoga</b></sub> <br/>
           <sub>Front End Web Developer</sub>
+        </a>
+      </td>
+      <td align="center">
+        <a href="https://github.com/janexmgd">
+          <img width="100" src="https://avatars.githubusercontent.com/u/43938494?v=4" alt="Denny Wahyu Prasetyo"><br/>
+          <sub><b>Denny Wahyu Prasetyo</b></sub> <br/>
+          <sub>Full Stack Web Developer</sub>
         </a>
       </td>
     </tr>
