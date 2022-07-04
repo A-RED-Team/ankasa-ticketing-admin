@@ -6,6 +6,7 @@ import ContentLoader from 'react-content-loader';
 import { useDispatch, useSelector } from 'react-redux';
 import { getdetailAirline } from '../../redux/actions/detailAirline';
 import moment from 'moment';
+import { Airline } from '../../assets/images/airline.png';
 
 const view = () => {
   const dispatch = useDispatch();
@@ -51,10 +52,10 @@ const view = () => {
                   ) : (
                     <div className="col-md-12 text-center">
                       <img
-                        src={`${process.env.REACT_APP_PROD}uploads/airlines/${detailAirline?.data?.data?.image}`}
+                        src={`https://drive.google.com/uc?export=view&id=${detailAirline?.data?.data?.image}`}
                         className="card-img-top img-fluid"
                         onError={(e) => {
-                          e.target.src = `${process.env.REACT_APP_PROD}uploads/airlines/airlines-default.png`;
+                          e.target.src = Airline;
                         }}
                         style={{
                           width: '30%'
