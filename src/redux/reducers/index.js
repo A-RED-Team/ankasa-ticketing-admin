@@ -8,6 +8,10 @@ import user from './user';
 import detailFlightReducer from './detailFlight';
 import allCityReducer from './allCity';
 import allPicReducer from './allPic';
+import listCountryReducer from './listCountry';
+import detailCountryReducer from './detailCountry';
+import listCityReducer from './listCity';
+import detailCityReducer from './detailCity';
 
 export default combineReducers({
   airline,
@@ -17,5 +21,9 @@ export default combineReducers({
   user,
   detailFlightReducer,
   allCityReducer,
-  allPicReducer
+  allPicReducer,
+  listCountry: listCountryReducer,
+  detailCountry: detailCountryReducer,
+  listCity: listCityReducer,
+  detailCity: detailCityReducer
 });

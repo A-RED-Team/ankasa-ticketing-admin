@@ -3,8 +3,8 @@ import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { getDetailUser } from '../../../redux/actions/user';
 import jwt_decode from 'jwt-decode';
-import { APP_STAGING, APP_DEV, APP_PROD } from '../../../helpers/env';
 import img from '../../../assets/images/vector 3.png';
+import User from '../../../assets/images/user.png';
 
 const index = () => {
   const navigate = useNavigate();
@@ -46,18 +46,17 @@ const index = () => {
           <div className="user-panel mt-3 pb-3 mb-3 d-flex">
             <div className="image">
               <img
-                src={`${
-                  APP_STAGING === 'dev'
-                    ? `${APP_DEV}uploads/users/${user.data?.photo}`
-                    : `${APP_PROD}uploads/users/${user.data?.photo}`
-                }`}
+                src={`https://drive.google.com/uc?export=view&id=${user?.data?.photo}`}
                 className="img-circle elevation-2"
-                alt="User Image"
+                alt={user?.data?.name}
+                onError={(e) => {
+                  e.target.src = User;
+                }}
               />
             </div>
             <div className="info">
               <a href="#" className="d-block">
-                {user.data?.username}
+                {user.data?.name}
               </a>
             </div>
           </div>
@@ -109,6 +108,36 @@ const index = () => {
               </li>
               <li className="nav-item">
                 <Link
+                  to="/booking"
+                  className={`${
+                    location.pathname.includes('/booking') ? 'nav-link active' : 'nav-link'
+                  }`}>
+                  <i className="nav-icon fas fa-calendar"></i>
+                  <p> Booking</p>
+                </Link>
+              </li>
+              <li className="nav-item">
+                <Link
+                  to="/city"
+                  className={`${
+                    location.pathname.includes('/city') ? 'nav-link active' : 'nav-link'
+                  }`}>
+                  <i className="nav-icon fas fa-city"></i>
+                  <p> City</p>
+                </Link>
+              </li>
+              <li className="nav-item">
+                <Link
+                  to="/country"
+                  className={`${
+                    location.pathname.includes('/country') ? 'nav-link active' : 'nav-link'
+                  }`}>
+                  <i className="nav-icon fas fa-globe"></i>
+                  <p> Country</p>
+                </Link>
+              </li>
+              <li className="nav-item">
+                <Link
                   to="/flight"
                   className={`${
                     location.pathname.includes('/flight') ? 'nav-link active' : 'nav-link'
@@ -119,12 +148,12 @@ const index = () => {
               </li>
               <li className="nav-item">
                 <Link
-                  to="/booking"
+                  to="/pic"
                   className={`${
-                    location.pathname.includes('/booking') ? 'nav-link active' : 'nav-link'
+                    location.pathname.includes('/pic') ? 'nav-link active' : 'nav-link'
                   }`}>
-                  <i className="nav-icon fas fa-calendar"></i>
-                  <p> Booking</p>
+                  <i className="nav-icon fas fa-user-tie"></i>
+                  <p> PIC</p>
                 </Link>
               </li>
               <li className="nav-header">LOGOUT</li>

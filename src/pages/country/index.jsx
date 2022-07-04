@@ -1,28 +1,21 @@
-import React, { useEffect, useState } from 'react';
-import { APP_NAME } from '../../helpers/env';
-import ContentHeader from '../../components/content-header';
+import React, { useEffect } from 'react';
+import $ from 'jquery';
 import { Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import ContentLoader from 'react-content-loader';
 import swal from 'sweetalert2';
+import { APP_NAME } from '../../helpers/env';
+import ContentHeader from '../../components/content-header';
 import { toastr } from '../../utils/toastr';
-import { Airline } from '../../assets/images/airline.png';
-import { getAllAirline } from '../../redux/actions/allAirlane';
-import { changeStatusAirline } from '../../redux/actions/statusAirline';
-import { deleteAirline } from '../../redux/actions/deleteAirline';
-
-import $ from 'jquery';
+import { getListCountry, updateStatus, destroy } from '../../redux/actions/country';
 
 const index = () => {
   const dispatch = useDispatch();
-  const allAirline = useSelector((state) => {
-    return state.allAirlineReducer;
-  });
-  const [loading, setloading] = useState(true);
+  const { listCountry } = useSelector((state) => state);
 
   useEffect(() => {
-    document.title = `${APP_NAME} - Management Airline`;
-    dispatch(getAllAirline());
+    document.title = `${APP_NAME} - Management Country`;
+    dispatch(getListCountry());
   }, []);
 
   useEffect(() => {
@@ -31,18 +24,13 @@ const index = () => {
         $('#example1').DataTable();
       }, 1000);
     });
-  }, [allAirline]);
+  }, [listCountry]);
 
-  useEffect(() => {
-    if (allAirline.data.data) {
-      setloading(false);
-    }
-  }, [allAirline]);
   const goNonActive = (e, id) => {
     e.preventDefault();
     swal
       .fire({
-        title: 'Changed status airline',
+        title: 'Changed status country',
         text: 'Are you sure to change the status to non active ?',
         icon: 'question',
         showCancelButton: true,
@@ -53,17 +41,15 @@ const index = () => {
       .then(async (nonActivated) => {
         if (nonActivated.isConfirmed) {
           try {
-            const res = await changeStatusAirline(id, {
-              isActive: 0
-            });
-            dispatch(getAllAirline());
+            const res = await updateStatus(id, { isActive: 0 });
+            dispatch(getListCountry());
             swal.fire({
               title: 'Success!',
               text: res.message,
               icon: 'success'
             });
           } catch (err) {
-            if (err.response.data.message === 'validation failed') {
+            if (err.response.data.code === 422) {
               const error = err.response.data.error;
               error.map((e) => toastr(e, 'error'));
             } else {
@@ -82,7 +68,7 @@ const index = () => {
     e.preventDefault();
     swal
       .fire({
-        title: 'Changed status airline ',
+        title: 'Changed status country',
         text: 'Are you sure to change the status to active ?',
         icon: 'question',
         showCancelButton: true,
@@ -93,8 +79,8 @@ const index = () => {
       .then(async (activated) => {
         if (activated.isConfirmed) {
           try {
-            const res = await changeStatusAirline(id, { isActive: 1 });
-            dispatch(getAllAirline());
+            const res = await updateStatus(id, { isActive: 1 });
+            dispatch(getListCountry());
             swal.fire({
               title: 'Success!',
               text: res.message,
@@ -120,8 +106,8 @@ const index = () => {
     e.preventDefault();
     swal
       .fire({
-        title: 'Delete Airline',
-        text: 'Are you sure to delete this airline ?',
+        title: 'Delete Country',
+        text: 'Are you sure to delete this country ?',
         icon: 'question',
         showCancelButton: true,
         confirmButtonColor: '#3085d6',
@@ -131,8 +117,8 @@ const index = () => {
       .then(async (deleted) => {
         if (deleted.isConfirmed) {
           try {
-            const res = await deleteAirline(id);
-            dispatch(getAllAirline());
+            const res = await destroy(id);
+            dispatch(getListCountry());
             swal.fire({
               title: 'Success!',
               text: res.message,
@@ -156,7 +142,7 @@ const index = () => {
 
   return (
     <>
-      <ContentHeader title="Airlines" />
+      <ContentHeader title="Management Country" />
       {/* Main content */}
       <section className="content">
         <div className="container-fluid">
@@ -164,16 +150,16 @@ const index = () => {
             <div className="col-12">
               <div className="card">
                 <div className="card-header">
-                  <h3 className="card-title">Management Airline</h3>
+                  <h3 className="card-title">Management Country</h3>
                 </div>
                 {/* /.card-header */}
                 <div className="card-body">
-                  <Link to="/airline/add" className="btn btn-primary mb-3">
-                    <i className="fa fa-plus"></i> Add Airline
+                  <Link to="/country/add" className="btn btn-primary mb-3">
+                    <i className="fa fa-plus"></i> Add Country
                   </Link>
-                  {loading ? (
+                  {listCountry?.isLoading ? (
                     <ContentLoader />
-                  ) : allAirline?.isError ? (
+                  ) : listCountry?.isError ? (
                     <div>Error</div>
                   ) : (
                     <table id="example1" className="table table-bordered table-striped table-hover">
@@ -187,20 +173,11 @@ const index = () => {
                         </tr>
                       </thead>
                       <tbody>
-                        {allAirline?.data?.data?.map((item, i) => (
+                        {listCountry?.data?.map((item, i) => (
                           <tr key={i}>
                             <td>{i + 1}</td>
                             <td>{item.name}</td>
-                            <td>
-                              <img
-                                src={`https://drive.google.com/uc?export=view&id=${item?.image}`}
-                                alt={`${item?.name}`}
-                                onError={(e) => {
-                                  e.target.src = Airline;
-                                }}
-                                style={{ width: '60px' }}
-                              />
-                            </td>
+                            <td>{item.alias}</td>
                             <td>
                               {item.is_active == 1 ? (
                                 <span className="badge badge-pill badge-success">Active</span>
@@ -211,13 +188,13 @@ const index = () => {
                             <td className="text-center">
                               <a
                                 className="btn btn-primary btn-sm"
-                                href={`airline/view/${item.id}`}>
+                                href={`country/view/${item.id}`}>
                                 <i className="fas fa-eye"></i>
                                 View
                               </a>
                               <a
                                 className="btn btn-info btn-sm ml-2"
-                                href={`airline/edit/${item.id}`}>
+                                href={`country/edit/${item.id}`}>
                                 <i className="fas fa-pencil-alt"></i>
                                 Edit
                               </a>
@@ -253,7 +230,6 @@ const index = () => {
                           </tr>
                         ))}
                       </tbody>
-                      <tfoot></tfoot>
                     </table>
                   )}
                 </div>

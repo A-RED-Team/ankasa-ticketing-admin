@@ -17,12 +17,14 @@ const index = () => {
     username: '',
     password: ''
   });
+
   useEffect(() => {
     document.title = `${APP_NAME} - Login Page`;
     if (token) {
       return navigate('/');
     }
   }, []);
+
   const onSubmit = (e) => {
     e.preventDefault();
 
@@ -58,7 +60,7 @@ const index = () => {
           }
         })
         .catch((err) => {
-          if (err.response.data.message === 'validation failed') {
+          if (err.response.data.code === 422) {
             const error = err.response.data.error;
             error.map((e) => toastr(e, 'error'));
           } else {
@@ -71,6 +73,10 @@ const index = () => {
         })
         .finally(() => {
           setLoading(false);
+          setForm({
+            username: '',
+            password: ''
+          });
         });
     }
   };
@@ -91,7 +97,7 @@ const index = () => {
                 <input
                   type="username"
                   className="form-control"
-                  placeholder="username"
+                  placeholder="Username"
                   onChange={(e) => setForm({ ...form, username: e.target.value })}
                 />
                 <div className="input-group-append">
@@ -140,9 +146,6 @@ const index = () => {
                       Sign In
                     </button>
                   )}
-                  {/* <button type="submit" className="btn btn-primary btn-block">
-                    Sign In
-                  </button> */}
                 </div>
               </div>
             </form>
