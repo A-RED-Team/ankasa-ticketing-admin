@@ -125,17 +125,26 @@ REACT_APP_API_URL=
 <table>
  
   <tr>
-    <td><image src="screenshoots/Login Page.png" alt="Login Page" width=100%></td>
-    <td><image src="screenshoots/Dashboard Page.png" alt="Dashboard Page" width=100%/></td>
+    <td><image src="https://lh3.googleusercontent.com/d/1pEbvwqv1V8Gj3HClpHUC1t11Ant8GZy9" alt="Dashboard Page" width=100%></td>
+    <td><image src="https://lh3.googleusercontent.com/d/1f0liG4nW_phzu-Rl0IZ46y1_uJ0AccXm" alt="List Airline Page" width=100%/></td>
   </tr>
    <tr>
-    <td>Login Page</td>
     <td>Dashboard Page</td>
+    <td>List Airline Page</td>
   </tr>
   
   <tr>
-    <td><image src="screenshoots/List Flight Page.png" alt="List Flight Page" width=100%></td>
-    <td><image src="screenshoots/View Flight Page.png" alt="View Flight Page" width=100%/></td>
+    <td><image src="https://lh3.googleusercontent.com/d/1J74WX-2i9HXlnKfQwrTKCzrla8OjARRK" alt="List City Page" width=100%></td>
+    <td><image src="https://lh3.googleusercontent.com/d/1YCHX2kdo4UScV3dNPk1EgjPqRH1yY3CI" alt="List Country Page" width=100%/></td>
+  </tr>
+   <tr>
+    <td>List City Page</td>
+    <td>List Country Page</td>
+  </tr>
+  
+  <tr>
+    <td><image src="https://lh3.googleusercontent.com/d/1XyqF2g03QO4Hxj6uWUZ3GIfpCW_PHZ3E" alt="List Flight Page" width=100%></td>
+    <td><image src="https://lh3.googleusercontent.com/d/1lVQsuYvqd26cZQMrXya0g38p2JEU7TCn" alt="View Flight Page" width=100%/></td>
   </tr>
   <tr>
     <td>List Flight Page</td>
@@ -143,8 +152,8 @@ REACT_APP_API_URL=
   </tr>
 
   <tr>
-    <td><image src="screenshoots/Add Flight Page.png" alt="Add Flight Page" width=100%></td>
-    <td><image src="screenshoots/Edit Flight Page.png" alt="Edit Flight Page" width=100%></td>
+    <td><image src="https://lh3.googleusercontent.com/d/1EPAxBAaikYK8MxFLvN5Hy7MP-hr3TeZ4" alt="Add Flight Page" width=100%></td>
+    <td><image src="https://lh3.googleusercontent.com/d/1J7vhFdvXxcrtrVVn3nawc1zArULNpnlG" alt="Edit Flight Page" width=100%></td>
   </tr>
   <tr>
       <td>Add Flight Page</td>
