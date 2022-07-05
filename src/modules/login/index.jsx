@@ -102,7 +102,7 @@ const index = () => {
                 />
                 <div className="input-group-append">
                   <div className="input-group-text">
-                    <span className="fas fa-envelope"></span>
+                    <span className="fas fa-user"></span>
                   </div>
                 </div>
               </div>
